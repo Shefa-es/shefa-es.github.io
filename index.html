@@ -1,13 +1,324 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shefa</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shefa | Gestión profesional de proyectos</title>
+  <meta name="description" content="Shefa es una empresa orientada a la gestión profesional de proyectos, acompañamiento estratégico y servicios de confianza para empresas y profesionales." />
+
+  <style>
+    :root {
+      --color-primary: #1f3d3a;
+      --color-secondary: #c7a76c;
+      --color-background: #f7f5ef;
+      --color-text: #1f1f1f;
+      --color-muted: #666666;
+      --color-white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--color-background);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      padding: 24px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: var(--color-white);
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      padding: 90px 8%;
+      background: linear-gradient(135deg, #1f3d3a 0%, #315f58 100%);
+      color: var(--color-white);
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      font-size: 46px;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      max-width: 720px;
+      font-size: 20px;
+      margin-bottom: 32px;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: var(--color-secondary);
+      color: var(--color-text);
+      padding: 14px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 70px 8%;
+    }
+
+    .section-white {
+      background-color: var(--color-white);
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 24px;
+      color: var(--color-primary);
+    }
+
+    .intro {
+      max-width: 850px;
+      font-size: 18px;
+      color: var(--color-muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 36px;
+    }
+
+    .card {
+      background-color: var(--color-white);
+      padding: 28px;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    .section-white .card {
+      background-color: var(--color-background);
+    }
+
+    .card h3 {
+      color: var(--color-primary);
+      margin-bottom: 12px;
+      font-size: 21px;
+    }
+
+    .card p {
+      color: var(--color-muted);
+      font-size: 16px;
+    }
+
+    .contact-box {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      padding: 40px;
+      border-radius: 12px;
+      max-width: 760px;
+    }
+
+    .contact-box h2 {
+      color: var(--color-white);
+    }
+
+    .contact-box p {
+      margin-bottom: 18px;
+      font-size: 18px;
+    }
+
+    .contact-box a {
+      color: var(--color-secondary);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    footer {
+      padding: 28px 8%;
+      background-color: #172c2a;
+      color: var(--color-white);
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer a {
+      color: var(--color-secondary);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        display: block;
+      }
+
+      nav {
+        margin-top: 16px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 0 14px 8px 0;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Shefa</h1>
-  <p>Web en construcción.</p>
-  <p>Próximamente más información.</p>
+
+  <header>
+    <div class="logo">Shefa</div>
+    <nav>
+      <a href="#sobre-nosotras">Sobre nosotras</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#confianza">Confianza</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Gestión profesional, criterio y confianza para impulsar proyectos con sentido.</h1>
+      <p>
+        En Shefa acompañamos a empresas y profesionales en la organización, coordinación
+        y desarrollo de proyectos, aportando estructura, seguimiento y una forma de trabajar
+        basada en la confianza y la confidencialidad.
+      </p>
+      <a class="button" href="mailto:hola@shefa.es">Contactar con Shefa</a>
+    </section>
+
+    <section id="sobre-nosotras" class="section-white">
+      <h2>Sobre Shefa</h2>
+      <p class="intro">
+        Shefa nace con la voluntad de ofrecer un servicio cercano, profesional y riguroso.
+        Nuestro enfoque combina organización, acompañamiento y capacidad de adaptación
+        para ayudar a nuestros clientes a avanzar con mayor claridad en sus proyectos.
+      </p>
+    </section>
+
+    <section id="servicios">
+      <h2>Servicios</h2>
+      <p class="intro">
+        Esta primera versión de la web es provisional. Más adelante adaptaremos los textos
+        a la actividad exacta de la empresa y al tipo de cliente al que se dirigirá Shefa.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Gestión de proyectos</h3>
+          <p>
+            Apoyo en la planificación, coordinación, seguimiento documental y control de tareas
+            para proyectos empresariales y profesionales.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Organización y procesos</h3>
+          <p>
+            Ayuda en la estructuración de información, definición de prioridades y mejora de la
+            forma de trabajar en entornos profesionales.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Acompañamiento profesional</h3>
+          <p>
+            Soporte cercano y confidencial para clientes que necesitan orden, criterio y continuidad
+            en la gestión de sus proyectos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="confianza" class="section-white">
+      <h2>Confianza y confidencialidad</h2>
+      <p class="intro">
+        Sabemos que muchos proyectos requieren discreción, responsabilidad y un tratamiento
+        cuidadoso de la información. Por eso, Shefa trabaja con una visión orientada a la
+        confianza, la claridad y la protección de los datos de sus clientes.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Trato cercano</h3>
+          <p>
+            Comunicación clara, seguimiento continuo y adaptación a las necesidades de cada cliente.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Rigor documental</h3>
+          <p>
+            Organización de la información y gestión ordenada de documentos, tareas y entregables.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Discreción</h3>
+          <p>
+            Enfoque profesional y prudente en el tratamiento de información sensible o confidencial.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="contact-box">
+        <h2>Contacto</h2>
+        <p>
+          Si quieres contactar con Shefa, puedes escribirnos a:
+        </p>
+        <p>
+          <a href="mailto:hola@shefa.es">hola@shefa.es</a>
+        </p>
+        <p>
+          Próximamente ampliaremos esta sección con más información de contacto.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© 2026 Shefa. Todos los derechos reservados.</div>
+    <div>
+      <a href="#">Aviso legal</a> ·
+      <a href="#">Política de privacidad</a>
+    </div>
+  </footer>
+
 </body>
 </html>
