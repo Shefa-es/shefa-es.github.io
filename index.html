@@ -53,10 +53,10 @@
       position: fixed;
       inset: 0 0 auto 0;
       z-index: 20;
-      height: 82px;
+      min-height: 82px;
       display: flex;
       align-items: center;
-      background: rgba(244,238,228,.78);
+      background: rgba(244,238,228,.82);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(20,20,20,.08);
     }
@@ -69,6 +69,11 @@
       gap: 1.5rem;
     }
     .brand img { width: 170px; height: auto; }
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
     .nav {
       display: flex;
       align-items: center;
@@ -88,6 +93,30 @@
       transition: width .22s ease;
     }
     .nav a:hover::after { width: 100%; }
+
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: .25rem;
+      border: 1px solid rgba(20,20,20,.18);
+      padding: .25rem;
+      background: rgba(255,255,255,.35);
+    }
+    .lang-switch button {
+      border: 0;
+      background: transparent;
+      padding: .42rem .55rem;
+      cursor: pointer;
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--muted);
+    }
+    .lang-switch button.active {
+      color: var(--ivory);
+      background: var(--ink);
+    }
 
     .hero {
       min-height: 790px;
@@ -193,10 +222,6 @@
     .body-copy p + p { margin-top: 1rem; }
 
     .areas-header { margin-bottom: 2rem; }
-    .areas-header h2 {
-      font-size: clamp(2.2rem, 4vw, 4.2rem);
-      line-height: 1;
-    }
     .areas-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -284,54 +309,70 @@
     }
     .why-item p { color: rgba(244,238,228,.75); font-size: .86rem; line-height: 1.45; }
 
-    .founders-layout {
+    /* FOUNDERS + OUTLOOK: stacked layout */
+    .founders-stack {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      grid-template-columns: 1fr;
+      gap: 3rem;
     }
     .founders-panel {
-      padding: 3.5rem 2.5rem 3.5rem 0;
-      border-right: 1px solid var(--line);
-    }
-    .founders-title {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 1.2rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--line);
     }
     .founder-cards {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.7rem;
+      align-items: stretch;
     }
     .founder-card {
       display: grid;
-      grid-template-columns: .9fr 1fr;
-      gap: 1rem;
-      align-items: center;
-      background: rgba(255,255,255,.22);
+      grid-template-columns: minmax(230px, .95fr) 1fr;
+      gap: 1.5rem;
+      align-items: stretch;
+      background: rgba(255,255,255,.24);
       border: 1px solid rgba(20,20,20,.08);
-      padding: .8rem;
+      min-height: 330px;
     }
     .founder-card img {
-      width: 100%; aspect-ratio: 1/1.08; object-fit: cover;
-      filter: grayscale(100%) sepia(10%) contrast(.9);
+      width: 100%; height: 100%; min-height: 330px;
+      object-fit: cover;
+      object-position: center;
+      filter: grayscale(100%) sepia(10%) contrast(.92);
+    }
+    .founder-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem 1.7rem 2rem 0;
     }
     .founder-card h3 {
       font-family: Georgia, 'Times New Roman', serif;
       font-weight: 400;
-      font-size: 1.1rem;
-      margin-bottom: .5rem;
+      font-size: clamp(1.65rem, 2vw, 2.35rem);
+      line-height: 1.05;
+      margin-bottom: 1rem;
     }
-    .founder-card p { font-size: .82rem; color: var(--ink-soft); line-height: 1.42; }
+    .founder-card p { font-size: 1rem; color: var(--ink-soft); line-height: 1.5; max-width: 350px; }
 
-    .outlook-panel {
+    .outlook-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+    .outlook-panel,
+    .outlook-video {
       position: relative;
-      min-height: 430px;
+      min-height: 470px;
       overflow: hidden;
+      color: var(--ivory);
+      background: var(--dark);
+    }
+    .outlook-panel {
       display: flex;
       align-items: flex-end;
       padding: 3.5rem;
-      color: var(--ivory);
     }
     .outlook-panel::before {
       content: '';
@@ -343,9 +384,27 @@
       position: absolute; inset: 0;
       width: 100%; height: 100%; object-fit: cover;
     }
-    .outlook-copy { position: relative; z-index: 2; max-width: 410px; }
+    .outlook-copy { position: relative; z-index: 2; max-width: 440px; }
     .outlook-copy .eyebrow { color: var(--gold); }
     .outlook-copy h2 { font-size: clamp(2rem, 3.2vw, 3.8rem); line-height: 1.02; }
+    .outlook-video video {
+      width: 100%; height: 100%; min-height: 470px;
+      object-fit: cover;
+      display: block;
+      background: var(--dark);
+    }
+    .video-note {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 2;
+      padding: .85rem 1rem;
+      color: rgba(244,238,228,.78);
+      background: rgba(0,0,0,.56);
+      font-size: .85rem;
+      line-height: 1.35;
+    }
 
     .selective {
       display: grid;
@@ -413,18 +472,20 @@
     .footer-links { display: flex; flex-wrap: wrap; gap: .7rem 1rem; justify-content: flex-end; }
     .footer-links a { color: var(--gold); text-decoration: none; }
 
-    @media (max-width: 1060px) {
-      .nav { gap: 1rem; font-size: .66rem; }
+    @media (max-width: 1120px) {
+      .nav { gap: .9rem; font-size: .66rem; }
+      .nav-wrap { gap: .75rem; }
       .areas-grid { grid-template-columns: repeat(3, 1fr); }
       .why-grid { grid-template-columns: repeat(2, 1fr); }
-      .founders-layout { grid-template-columns: 1fr; }
-      .founders-panel { border-right: 0; padding-right: 0; }
+      .founder-cards { grid-template-columns: 1fr; }
+      .outlook-layout { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 780px) {
       .site-header { height: auto; padding: .8rem 0; position: sticky; }
       .header-inner { width: min(100% - 30px, var(--max)); flex-direction: column; align-items: flex-start; }
       .brand img { width: 150px; }
+      .nav-wrap { width: 100%; flex-direction: column; align-items: flex-start; gap: .8rem; }
       .nav { width: 100%; overflow-x: auto; padding-bottom: .3rem; gap: 1rem; }
       .nav a { white-space: nowrap; }
       .hero { min-height: 680px; padding-top: 0; }
@@ -436,9 +497,13 @@
       .areas-grid { grid-template-columns: 1fr; }
       .area-card { display: grid; grid-template-columns: 140px 1fr; gap: 1rem; padding-left: 0; border-left: 0; border-top: 1px solid var(--line); padding-top: 1rem; }
       .area-card img { margin: 0; aspect-ratio: 1/1; }
-      .why-grid, .founder-cards, .statements { grid-template-columns: 1fr; }
-      .founder-card { grid-template-columns: 120px 1fr; }
-      .outlook-panel { padding: 2rem; min-height: 360px; }
+      .why-grid, .statements { grid-template-columns: 1fr; }
+      .founder-card { grid-template-columns: 1fr; min-height: 0; }
+      .founder-card img { min-height: 420px; }
+      .founder-text { padding: 1.5rem; }
+      .outlook-panel, .outlook-video { min-height: 380px; }
+      .outlook-panel { padding: 2rem; }
+      .outlook-video video { min-height: 380px; }
       .contact-inner { flex-direction: column; align-items: flex-start; }
       .footer-inner { grid-template-columns: 1fr; text-align: left; }
       .footer-center { text-align: left; }
@@ -453,14 +518,22 @@
       <a class="brand" href="#top" aria-label="SHEFA home">
         <img src="assets/logo-shefa.png" alt="SHEFA - Scientific Health Exchange for Alliances" />
       </a>
-      <nav class="nav" aria-label="Main navigation">
-        <a href="#who-we-are">Who we are</a>
-        <a href="#strategic-areas">Strategic areas</a>
-        <a href="#why-shefa">Why SHEFA</a>
-        <a href="#founders">Founders</a>
-        <a href="#outlook">Outlook</a>
-        <a href="#contact">Contact</a>
-      </nav>
+
+      <div class="nav-wrap">
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#who-we-are" data-i18n="nav.who">Who we are</a>
+          <a href="#strategic-areas" data-i18n="nav.areas">Strategic areas</a>
+          <a href="#why-shefa" data-i18n="nav.why">Why SHEFA</a>
+          <a href="#founders" data-i18n="nav.founders">Founders</a>
+          <a href="#outlook" data-i18n="nav.outlook">Outlook</a>
+          <a href="#contact" data-i18n="nav.contact">Contact</a>
+        </nav>
+
+        <div class="lang-switch" aria-label="Language selector">
+          <button type="button" data-lang="en" class="active">EN</button>
+          <button type="button" data-lang="es">ES</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -469,11 +542,11 @@
       <img class="hero-bg" src="assets/hero-section.webp" alt="Architectural healthcare collaboration setting at sunrise" />
       <div class="hero-content">
         <div class="hero-copy">
-          <h1 class="serif">Connecting biomedical innovation with the future of global healthcare.</h1>
-          <p>A strategic platform at the intersection of scientific diplomacy, healthcare ecosystems and international strategic partnerships.</p>
+          <h1 class="serif" data-i18n="hero.title">Connecting biomedical innovation with the future of global healthcare.</h1>
+          <p data-i18n="hero.text">A strategic platform at the intersection of scientific diplomacy, healthcare ecosystems and international strategic partnerships.</p>
           <div class="button-row">
-            <a class="btn btn-primary" href="#who-we-are">Explore SHEFA</a>
-            <a class="btn btn-secondary" href="#strategic-areas">Strategic Partnerships</a>
+            <a class="btn btn-primary" href="#who-we-are" data-i18n="hero.button1">Explore SHEFA</a>
+            <a class="btn btn-secondary" href="#strategic-areas" data-i18n="hero.button2">Strategic Partnerships</a>
           </div>
         </div>
       </div>
@@ -484,11 +557,11 @@
         <img src="assets/who-we-are.webp" alt="Two healthcare professionals speaking in an institutional corridor" />
       </div>
       <div class="split-copy">
-        <div class="eyebrow">Who we are</div>
-        <h2 class="serif">A strategic platform for international healthcare collaboration.</h2>
+        <div class="eyebrow" data-i18n="who.label">Who we are</div>
+        <h2 class="serif" data-i18n="who.title">A strategic platform for international healthcare collaboration.</h2>
         <div class="body-copy">
-          <p>SHEFA connects biomedical innovation, institutional ecosystems and international healthcare partnerships through strategic intelligence, scientific diplomacy and institutional execution.</p>
-          <p>Built through European expertise and Gulf institutional connectivity, SHEFA creates pathways between innovation, implementation and long-term institutional impact.</p>
+          <p data-i18n="who.p1">SHEFA connects biomedical innovation, institutional ecosystems and international healthcare partnerships through strategic intelligence, scientific diplomacy and institutional execution.</p>
+          <p data-i18n="who.p2">Built through European expertise and Gulf institutional connectivity, SHEFA creates pathways between innovation, implementation and long-term institutional impact.</p>
         </div>
       </div>
     </section>
@@ -496,47 +569,47 @@
     <section id="strategic-areas" class="section">
       <div class="container">
         <div class="areas-header">
-          <div class="eyebrow">Strategic areas</div>
+          <div class="eyebrow" data-i18n="areas.label">Strategic areas</div>
         </div>
         <div class="areas-grid">
           <article class="area-card">
             <img src="assets/area-biomedical.webp" alt="Biomedical molecular structure" />
             <div>
               <div class="area-number">01</div>
-              <h3>Biomedical Innovation</h3>
-              <p>Strategic positioning and validation of biomedical technologies with international potential.</p>
+              <h3 data-i18n="areas.1.title">Biomedical Innovation</h3>
+              <p data-i18n="areas.1.text">Strategic positioning and validation of biomedical technologies with international potential.</p>
             </div>
           </article>
           <article class="area-card">
             <img src="assets/area-diplomacy.webp" alt="Abstract institutional lattice structure" />
             <div>
               <div class="area-number">02</div>
-              <h3>Scientific Diplomacy</h3>
-              <p>Connecting institutions, healthcare ecosystems and international strategic stakeholders.</p>
+              <h3 data-i18n="areas.2.title">Scientific Diplomacy</h3>
+              <p data-i18n="areas.2.text">Connecting institutions, healthcare ecosystems and international strategic stakeholders.</p>
             </div>
           </article>
           <article class="area-card">
             <img src="assets/area-partnerships.webp" alt="International institutional meeting environment" />
             <div>
               <div class="area-number">03</div>
-              <h3>International Healthcare Partnerships</h3>
-              <p>Facilitating high-value collaborations across hospitals, research centres and innovation ecosystems.</p>
+              <h3 data-i18n="areas.3.title">International Healthcare Partnerships</h3>
+              <p data-i18n="areas.3.text">Facilitating high-value collaborations across hospitals, research centres and innovation ecosystems.</p>
             </div>
           </article>
           <article class="area-card">
             <img src="assets/area-market-access.webp" alt="Architectural gateway toward an international skyline" />
             <div>
               <div class="area-number">04</div>
-              <h3>Gulf &amp; International Market Access</h3>
-              <p>Institutional access to Gulf healthcare environments and international healthcare ecosystems.</p>
+              <h3 data-i18n="areas.4.title">Gulf &amp; International Market Access</h3>
+              <p data-i18n="areas.4.text">Institutional access to Gulf healthcare environments and international healthcare ecosystems.</p>
             </div>
           </article>
           <article class="area-card">
             <img src="assets/area-clinical-pilots.webp" alt="Advanced clinical operating room with innovation technology" />
             <div>
               <div class="area-number">05</div>
-              <h3>Clinical Pilots &amp; Innovation Activation</h3>
-              <p>Translating innovation into strategic pilots, institutional partnerships and implementation pathways.</p>
+              <h3 data-i18n="areas.5.title">Clinical Pilots &amp; Innovation Activation</h3>
+              <p data-i18n="areas.5.text">Translating innovation into strategic pilots, institutional partnerships and implementation pathways.</p>
             </div>
           </article>
         </div>
@@ -547,60 +620,70 @@
       <img class="why-bg" src="assets/why-shefa.webp" alt="Dark architectural interior overlooking an international skyline" />
       <div class="container why-inner">
         <div>
-          <div class="eyebrow">Why SHEFA</div>
-          <h2 class="serif">A rare combination of institutional access, strategic intelligence and international execution.</h2>
+          <div class="eyebrow" data-i18n="why.label">Why SHEFA</div>
+          <h2 class="serif" data-i18n="why.title">A rare combination of institutional access, strategic intelligence and international execution.</h2>
         </div>
         <div class="why-grid">
           <article class="why-item">
             <svg class="why-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="32" cy="32" r="24"/><path d="M8 32h48M32 8c8 8 12 16 12 24s-4 16-12 24M32 8C24 16 20 24 20 32s4 16 12 24"/></svg>
-            <h3>Institutional Access</h3>
-            <p>Trusted relationships across healthcare, innovation and international ecosystems.</p>
+            <h3 data-i18n="why.1.title">Institutional Access</h3>
+            <p data-i18n="why.1.text">Trusted relationships across healthcare, innovation and international ecosystems.</p>
           </article>
           <article class="why-item">
             <svg class="why-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="32" cy="32" r="23"/><circle cx="32" cy="32" r="6"/><path d="M32 9v10M32 45v10M9 32h10M45 32h10"/></svg>
-            <h3>Strategic Intelligence</h3>
-            <p>Ability to translate complexity into structured opportunities and strategic initiatives.</p>
+            <h3 data-i18n="why.2.title">Strategic Intelligence</h3>
+            <p data-i18n="why.2.text">Ability to translate complexity into structured opportunities and strategic initiatives.</p>
           </article>
           <article class="why-item">
             <svg class="why-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="24" cy="30" r="14"/><circle cx="40" cy="30" r="14"/><circle cx="32" cy="42" r="14"/></svg>
-            <h3>Cross-Cultural Understanding</h3>
-            <p>Operational understanding of Gulf and international institutional environments.</p>
+            <h3 data-i18n="why.3.title">Cross-Cultural Understanding</h3>
+            <p data-i18n="why.3.text">Operational understanding of Gulf and international institutional environments.</p>
           </article>
           <article class="why-item">
             <svg class="why-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 48 48 16M24 16h24v24"/></svg>
-            <h3>Execution</h3>
-            <p>Beyond strategy — activation, alignment and implementation.</p>
+            <h3 data-i18n="why.4.title">Execution</h3>
+            <p data-i18n="why.4.text">Beyond strategy — activation, alignment and implementation.</p>
           </article>
         </div>
       </div>
     </section>
 
     <section id="founders" class="section">
-      <div class="container founders-layout">
+      <div class="container founders-stack">
         <div class="founders-panel">
-          <div class="eyebrow">Founders</div>
+          <div class="eyebrow" data-i18n="founders.label">Founders</div>
           <div class="founder-cards">
             <article class="founder-card">
               <img src="assets/founder-rania.webp" alt="Portrait of Rania El Ghauche" />
-              <div>
+              <div class="founder-text">
                 <h3>Rania El Ghauche</h3>
-                <p>International healthcare diplomacy, institutional partnerships and Gulf ecosystem development.</p>
+                <p data-i18n="founders.rania">International healthcare diplomacy, institutional partnerships and Gulf ecosystem development.</p>
               </div>
             </article>
             <article class="founder-card">
               <img src="assets/founder-ana.webp" alt="Portrait of Ana Garrido" />
-              <div>
+              <div class="founder-text">
                 <h3>Ana Garrido</h3>
-                <p>Strategic structuring, innovation ecosystems and activation of complex international initiatives.</p>
+                <p data-i18n="founders.ana">Strategic structuring, innovation ecosystems and activation of complex international initiatives.</p>
               </div>
             </article>
           </div>
         </div>
-        <div id="outlook" class="outlook-panel">
-          <img src="assets/international-outlook.webp" alt="International outlook bridge between institutional environments" />
-          <div class="outlook-copy">
-            <div class="eyebrow">International outlook</div>
-            <h2 class="serif">Built in Barcelona.<br />Designed for international healthcare ecosystems.</h2>
+
+        <div id="outlook" class="outlook-layout">
+          <div class="outlook-panel">
+            <img src="assets/international-outlook.webp" alt="International outlook bridge between institutional environments" />
+            <div class="outlook-copy">
+              <div class="eyebrow" data-i18n="outlook.label">International outlook</div>
+              <h2 class="serif" data-i18n="outlook.title">Built in Barcelona.<br />Designed for international healthcare ecosystems.</h2>
+            </div>
+          </div>
+
+          <div class="outlook-video" aria-label="SHEFA video">
+            <video controls playsinline preload="metadata" poster="assets/footer-visual.webp">
+              <source src="assets/outlook-video.mp4" type="video/mp4" />
+            </video>
+            <div class="video-note" data-i18n="outlook.videoNote">Video area. Upload the file as <strong>assets/outlook-video.mp4</strong> to display it here.</div>
           </div>
         </div>
       </div>
@@ -609,22 +692,22 @@
     <section class="section" aria-label="Selective by design">
       <div class="container selective">
         <div class="selective-copy">
-          <div class="eyebrow">Selective by design</div>
-          <p>SHEFA operates through a highly selective collaboration model, prioritising strategic alignment, institutional value and long-term impact.</p>
-          <p style="margin-top:1rem;">We engage in projects where international connectivity, trusted relationships and execution create long-term institutional value.</p>
+          <div class="eyebrow" data-i18n="selective.label">Selective by design</div>
+          <p data-i18n="selective.p1">SHEFA operates through a highly selective collaboration model, prioritising strategic alignment, institutional value and long-term impact.</p>
+          <p style="margin-top:1rem;" data-i18n="selective.p2">We engage in projects where international connectivity, trusted relationships and execution create long-term institutional value.</p>
         </div>
         <div class="statements">
           <article class="statement">
             <div class="num">01</div>
-            <p>Strategic healthcare ecosystems require more than innovation alone.</p>
+            <p data-i18n="selective.s1">Strategic healthcare ecosystems require more than innovation alone.</p>
           </article>
           <article class="statement">
             <div class="num">02</div>
-            <p>Trusted relationships shape healthcare transformation.</p>
+            <p data-i18n="selective.s2">Trusted relationships shape healthcare transformation.</p>
           </article>
           <article class="statement">
             <div class="num">03</div>
-            <p>Access, alignment and execution define the future of international healthcare collaboration.</p>
+            <p data-i18n="selective.s3">Access, alignment and execution define the future of international healthcare collaboration.</p>
           </article>
         </div>
       </div>
@@ -632,10 +715,10 @@
 
     <section id="contact" class="contact-strip">
       <div class="container contact-inner">
-        <h2 class="serif">Strategic Partnerships &amp;<br />International Collaborations</h2>
+        <h2 class="serif" data-i18n="contact.title">Strategic Partnerships &amp;<br />International Collaborations</h2>
         <div>
           <p><a href="mailto:info@shefa.es">info@shefa.es</a></p>
-          <p style="margin-top:.35rem; color:rgba(244,238,228,.68);">Barcelona, Spain</p>
+          <p style="margin-top:.35rem; color:rgba(244,238,228,.68);" data-i18n="contact.location">Barcelona, Spain</p>
         </div>
       </div>
     </section>
@@ -650,10 +733,140 @@
       <div class="footer-links">
         <a href="mailto:info@shefa.es">Email</a>
         <a href="#" aria-label="LinkedIn link pending">LinkedIn</a>
-        <a href="#" aria-label="Privacy policy pending">Privacy Policy</a>
-        <a href="#" aria-label="Legal notice pending">Legal Notice</a>
+        <a href="#" aria-label="Privacy policy pending" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="#" aria-label="Legal notice pending" data-i18n="footer.legal">Legal Notice</a>
       </div>
     </div>
   </footer>
+
+  <script>
+    const translations = {
+      en: {
+        "nav.who": "Who we are",
+        "nav.areas": "Strategic areas",
+        "nav.why": "Why SHEFA",
+        "nav.founders": "Founders",
+        "nav.outlook": "Outlook",
+        "nav.contact": "Contact",
+        "hero.title": "Connecting biomedical innovation with the future of global healthcare.",
+        "hero.text": "A strategic platform at the intersection of scientific diplomacy, healthcare ecosystems and international strategic partnerships.",
+        "hero.button1": "Explore SHEFA",
+        "hero.button2": "Strategic Partnerships",
+        "who.label": "Who we are",
+        "who.title": "A strategic platform for international healthcare collaboration.",
+        "who.p1": "SHEFA connects biomedical innovation, institutional ecosystems and international healthcare partnerships through strategic intelligence, scientific diplomacy and institutional execution.",
+        "who.p2": "Built through European expertise and Gulf institutional connectivity, SHEFA creates pathways between innovation, implementation and long-term institutional impact.",
+        "areas.label": "Strategic areas",
+        "areas.1.title": "Biomedical Innovation",
+        "areas.1.text": "Strategic positioning and validation of biomedical technologies with international potential.",
+        "areas.2.title": "Scientific Diplomacy",
+        "areas.2.text": "Connecting institutions, healthcare ecosystems and international strategic stakeholders.",
+        "areas.3.title": "International Healthcare Partnerships",
+        "areas.3.text": "Facilitating high-value collaborations across hospitals, research centres and innovation ecosystems.",
+        "areas.4.title": "Gulf & International Market Access",
+        "areas.4.text": "Institutional access to Gulf healthcare environments and international healthcare ecosystems.",
+        "areas.5.title": "Clinical Pilots & Innovation Activation",
+        "areas.5.text": "Translating innovation into strategic pilots, institutional partnerships and implementation pathways.",
+        "why.label": "Why SHEFA",
+        "why.title": "A rare combination of institutional access, strategic intelligence and international execution.",
+        "why.1.title": "Institutional Access",
+        "why.1.text": "Trusted relationships across healthcare, innovation and international ecosystems.",
+        "why.2.title": "Strategic Intelligence",
+        "why.2.text": "Ability to translate complexity into structured opportunities and strategic initiatives.",
+        "why.3.title": "Cross-Cultural Understanding",
+        "why.3.text": "Operational understanding of Gulf and international institutional environments.",
+        "why.4.title": "Execution",
+        "why.4.text": "Beyond strategy — activation, alignment and implementation.",
+        "founders.label": "Founders",
+        "founders.rania": "International healthcare diplomacy, institutional partnerships and Gulf ecosystem development.",
+        "founders.ana": "Strategic structuring, innovation ecosystems and activation of complex international initiatives.",
+        "outlook.label": "International outlook",
+        "outlook.title": "Built in Barcelona.<br />Designed for international healthcare ecosystems.",
+        "outlook.videoNote": "Video area. Upload the file as <strong>assets/outlook-video.mp4</strong> to display it here.",
+        "selective.label": "Selective by design",
+        "selective.p1": "SHEFA operates through a highly selective collaboration model, prioritising strategic alignment, institutional value and long-term impact.",
+        "selective.p2": "We engage in projects where international connectivity, trusted relationships and execution create long-term institutional value.",
+        "selective.s1": "Strategic healthcare ecosystems require more than innovation alone.",
+        "selective.s2": "Trusted relationships shape healthcare transformation.",
+        "selective.s3": "Access, alignment and execution define the future of international healthcare collaboration.",
+        "contact.title": "Strategic Partnerships &<br />International Collaborations",
+        "contact.location": "Barcelona, Spain",
+        "footer.privacy": "Privacy Policy",
+        "footer.legal": "Legal Notice"
+      },
+      es: {
+        "nav.who": "Quiénes somos",
+        "nav.areas": "Áreas estratégicas",
+        "nav.why": "Por qué SHEFA",
+        "nav.founders": "Fundadoras",
+        "nav.outlook": "Proyección",
+        "nav.contact": "Contacto",
+        "hero.title": "Conectando la innovación biomédica con el futuro de la salud global.",
+        "hero.text": "Una plataforma estratégica situada en la intersección entre la diplomacia científica, los ecosistemas sanitarios y las alianzas estratégicas internacionales.",
+        "hero.button1": "Explorar SHEFA",
+        "hero.button2": "Alianzas estratégicas",
+        "who.label": "Quiénes somos",
+        "who.title": "Una plataforma estratégica para la colaboración sanitaria internacional.",
+        "who.p1": "SHEFA conecta innovación biomédica, ecosistemas institucionales y alianzas sanitarias internacionales mediante inteligencia estratégica, diplomacia científica y ejecución institucional.",
+        "who.p2": "Construida desde la experiencia europea y la conectividad institucional con el Golfo, SHEFA crea vías entre innovación, implementación e impacto institucional a largo plazo.",
+        "areas.label": "Áreas estratégicas",
+        "areas.1.title": "Innovación biomédica",
+        "areas.1.text": "Posicionamiento estratégico y validación de tecnologías biomédicas con potencial internacional.",
+        "areas.2.title": "Diplomacia científica",
+        "areas.2.text": "Conexión entre instituciones, ecosistemas sanitarios y actores estratégicos internacionales.",
+        "areas.3.title": "Alianzas sanitarias internacionales",
+        "areas.3.text": "Impulso de colaboraciones de alto valor entre hospitales, centros de investigación y ecosistemas de innovación.",
+        "areas.4.title": "Acceso al Golfo y a mercados internacionales",
+        "areas.4.text": "Acceso institucional a entornos sanitarios del Golfo y a ecosistemas sanitarios internacionales.",
+        "areas.5.title": "Pilotos clínicos y activación de innovación",
+        "areas.5.text": "Traslación de la innovación hacia pilotos estratégicos, alianzas institucionales y vías de implementación.",
+        "why.label": "Por qué SHEFA",
+        "why.title": "Una combinación poco habitual de acceso institucional, inteligencia estratégica y ejecución internacional.",
+        "why.1.title": "Acceso institucional",
+        "why.1.text": "Relaciones de confianza en ecosistemas sanitarios, de innovación e internacionales.",
+        "why.2.title": "Inteligencia estratégica",
+        "why.2.text": "Capacidad para traducir la complejidad en oportunidades estructuradas e iniciativas estratégicas.",
+        "why.3.title": "Comprensión intercultural",
+        "why.3.text": "Conocimiento operativo de entornos institucionales del Golfo e internacionales.",
+        "why.4.title": "Ejecución",
+        "why.4.text": "Más allá de la estrategia: activación, alineación e implementación.",
+        "founders.label": "Fundadoras",
+        "founders.rania": "Diplomacia sanitaria internacional, alianzas institucionales y desarrollo de ecosistemas en el Golfo.",
+        "founders.ana": "Estructuración estratégica, ecosistemas de innovación y activación de iniciativas internacionales complejas.",
+        "outlook.label": "Proyección internacional",
+        "outlook.title": "Nacida en Barcelona.<br />Diseñada para ecosistemas sanitarios internacionales.",
+        "outlook.videoNote": "Área de vídeo. Sube el archivo como <strong>assets/outlook-video.mp4</strong> para mostrarlo aquí.",
+        "selective.label": "Selectiva por diseño",
+        "selective.p1": "SHEFA opera mediante un modelo de colaboración altamente selectivo, priorizando la alineación estratégica, el valor institucional y el impacto a largo plazo.",
+        "selective.p2": "Participamos en proyectos donde la conectividad internacional, las relaciones de confianza y la ejecución generan valor institucional a largo plazo.",
+        "selective.s1": "Los ecosistemas sanitarios estratégicos requieren más que innovación por sí sola.",
+        "selective.s2": "Las relaciones de confianza impulsan la transformación sanitaria.",
+        "selective.s3": "Acceso, alineación y ejecución definen el futuro de la colaboración sanitaria internacional.",
+        "contact.title": "Alianzas estratégicas y<br />colaboraciones internacionales",
+        "contact.location": "Barcelona, España",
+        "footer.privacy": "Política de privacidad",
+        "footer.legal": "Aviso legal"
+      }
+    };
+
+    function setLanguage(lang) {
+      const dictionary = translations[lang] || translations.en;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach((node) => {
+        const key = node.getAttribute('data-i18n');
+        if (dictionary[key]) node.innerHTML = dictionary[key];
+      });
+      document.querySelectorAll('.lang-switch button').forEach((button) => {
+        button.classList.toggle('active', button.dataset.lang === lang);
+      });
+      localStorage.setItem('shefaLanguage', lang);
+    }
+
+    document.querySelectorAll('.lang-switch button').forEach((button) => {
+      button.addEventListener('click', () => setLanguage(button.dataset.lang));
+    });
+
+    setLanguage(localStorage.getItem('shefaLanguage') || 'en');
+  </script>
 </body>
 </html>
