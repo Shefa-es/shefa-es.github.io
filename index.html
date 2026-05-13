@@ -1,324 +1,659 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shefa | Gestión profesional de proyectos</title>
-  <meta name="description" content="Shefa es una empresa orientada a la gestión profesional de proyectos, acompañamiento estratégico y servicios de confianza para empresas y profesionales." />
+  <title>SHEFA | Scientific Health Exchange for Alliances</title>
+  <meta name="description" content="SHEFA connects biomedical innovation, healthcare ecosystems and international strategic partnerships through scientific diplomacy and institutional execution." />
 
   <style>
     :root {
-      --color-primary: #1f3d3a;
-      --color-secondary: #c7a76c;
-      --color-background: #f7f5ef;
-      --color-text: #1f1f1f;
-      --color-muted: #666666;
-      --color-white: #ffffff;
+      --ivory: #f4eee4;
+      --ivory-2: #ebe1d3;
+      --sand: #d6c2a4;
+      --gold: #c7952f;
+      --gold-dark: #9f7425;
+      --ink: #141414;
+      --ink-soft: #2a2926;
+      --muted: #6f685f;
+      --line: rgba(20,20,20,.16);
+      --white: #ffffff;
+      --dark: #101010;
+      --dark-2: #1b1a17;
+      --max: 1240px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background-color: var(--color-background);
-      color: var(--color-text);
-      line-height: 1.6;
+      color: var(--ink);
+      background: var(--ivory);
+      line-height: 1.55;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    .eyebrow {
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      font-weight: 700;
+      margin-bottom: 1.1rem;
     }
 
-    header {
-      background-color: var(--color-primary);
-      color: var(--color-white);
-      padding: 24px 8%;
+    .serif {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+      letter-spacing: -.03em;
+    }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 20;
+      height: 82px;
+      display: flex;
+      align-items: center;
+      background: rgba(244,238,228,.78);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(20,20,20,.08);
+    }
+    .header-inner {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .brand img { width: 170px; height: auto; }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1.7rem;
+      font-size: .73rem;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .nav a { text-decoration: none; position: relative; }
+    .nav a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -7px;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width .22s ease;
+    }
+    .nav a:hover::after { width: 100%; }
+
+    .hero {
+      min-height: 790px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--ivory);
+      padding-top: 82px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(244,238,228,.96) 0%, rgba(244,238,228,.88) 31%, rgba(244,238,228,.35) 53%, rgba(244,238,228,.06) 100%);
+      z-index: 1;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center right;
+      filter: saturate(.96) contrast(.98);
+    }
+    .hero-content {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      padding: 5rem 0 4rem;
+    }
+    .hero-copy { max-width: 610px; }
+    .hero h1 {
+      font-size: clamp(2.45rem, 5vw, 5.25rem);
+      line-height: .98;
+      margin-bottom: 1.6rem;
+      color: var(--ink);
+    }
+    .hero p {
+      max-width: 500px;
+      color: #2a2926;
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+    .button-row { display: flex; gap: .85rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: .9rem 1.45rem;
+      border: 1px solid var(--gold-dark);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .72rem;
+      font-weight: 700;
+      transition: all .22s ease;
+      background: transparent;
+    }
+    .btn-primary { color: var(--gold-dark); background: rgba(255,255,255,.22); }
+    .btn-secondary { color: var(--ink); border-color: var(--ink); }
+    .btn:hover { background: var(--ink); color: var(--ivory); border-color: var(--ink); }
+
+    .section {
+      padding: 5rem 0;
+      border-top: 1px solid var(--line);
+    }
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 0;
+      align-items: stretch;
+      background: var(--ivory);
+    }
+    .split-media img {
+      width: 100%; height: 100%; object-fit: cover; min-height: 440px;
+    }
+    .split-copy {
+      padding: clamp(2rem, 5vw, 5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-left: 1px solid var(--line);
+    }
+    .split-copy h2 {
+      font-size: clamp(2rem, 3.7vw, 4.1rem);
+      line-height: 1.02;
+      max-width: 760px;
+      margin-bottom: 1.8rem;
+    }
+    .body-copy {
+      max-width: 690px;
+      color: var(--ink-soft);
+      font-size: 1rem;
+    }
+    .body-copy p + p { margin-top: 1rem; }
+
+    .areas-header { margin-bottom: 2rem; }
+    .areas-header h2 {
+      font-size: clamp(2.2rem, 4vw, 4.2rem);
+      line-height: 1;
+    }
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.25rem;
+    }
+    .area-card {
+      border-left: 1px solid var(--line);
+      padding-left: 1rem;
+    }
+    .area-card img {
+      width: 100%; aspect-ratio: 1.54 / 1;
+      object-fit: cover;
+      margin-bottom: 1.2rem;
+      filter: saturate(.85);
+    }
+    .area-number {
+      color: var(--gold-dark);
+      font-size: .85rem;
+      margin-bottom: .35rem;
+    }
+    .area-card h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.28rem;
+      font-weight: 400;
+      line-height: 1.05;
+      margin-bottom: .7rem;
+    }
+    .area-card p {
+      color: var(--ink-soft);
+      font-size: .89rem;
+      line-height: 1.45;
+    }
+
+    .why {
+      position: relative;
+      color: var(--ivory);
+      background: var(--dark);
+      overflow: hidden;
+      padding: 4.6rem 0;
+    }
+    .why::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(10,10,10,.98) 0%, rgba(10,10,10,.94) 55%, rgba(10,10,10,.4) 100%);
+      z-index: 1;
+    }
+    .why-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center right;
+      opacity: .72;
+    }
+    .why-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .why .eyebrow { color: var(--gold); }
+    .why h2 {
+      font-size: clamp(2rem, 4vw, 4.6rem);
+      line-height: 1.02;
+      max-width: 620px;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.4rem;
+    }
+    .why-item { border-left: 1px solid rgba(244,238,228,.22); padding-left: 1rem; }
+    .why-icon {
+      width: 54px; height: 54px; margin-bottom: 1rem;
+      color: var(--gold);
+    }
+    .why-item h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.12rem;
+      font-weight: 400;
+      margin-bottom: .55rem;
+    }
+    .why-item p { color: rgba(244,238,228,.75); font-size: .86rem; line-height: 1.45; }
+
+    .founders-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .founders-panel {
+      padding: 3.5rem 2.5rem 3.5rem 0;
+      border-right: 1px solid var(--line);
+    }
+    .founders-title {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1.2rem;
+    }
+    .founder-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .founder-card {
+      display: grid;
+      grid-template-columns: .9fr 1fr;
+      gap: 1rem;
+      align-items: center;
+      background: rgba(255,255,255,.22);
+      border: 1px solid rgba(20,20,20,.08);
+      padding: .8rem;
+    }
+    .founder-card img {
+      width: 100%; aspect-ratio: 1/1.08; object-fit: cover;
+      filter: grayscale(100%) sepia(10%) contrast(.9);
+    }
+    .founder-card h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+      font-size: 1.1rem;
+      margin-bottom: .5rem;
+    }
+    .founder-card p { font-size: .82rem; color: var(--ink-soft); line-height: 1.42; }
+
+    .outlook-panel {
+      position: relative;
+      min-height: 430px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 3.5rem;
+      color: var(--ivory);
+    }
+    .outlook-panel::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,.72), rgba(0,0,0,.04));
+      z-index: 1;
+    }
+    .outlook-panel img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .outlook-copy { position: relative; z-index: 2; max-width: 410px; }
+    .outlook-copy .eyebrow { color: var(--gold); }
+    .outlook-copy h2 { font-size: clamp(2rem, 3.2vw, 3.8rem); line-height: 1.02; }
+
+    .selective {
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .selective-copy p { color: var(--ink-soft); max-width: 560px; }
+    .statements {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.6rem;
+    }
+    .statement {
+      border-left: 1px solid var(--line);
+      padding-left: 1.2rem;
+    }
+    .statement .num {
+      color: var(--gold-dark);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.65rem;
+      margin-bottom: .5rem;
+    }
+    .statement p { color: var(--ink-soft); font-size: .96rem; line-height: 1.45; }
+
+    .contact-strip {
+      background: var(--dark-2);
+      color: var(--ivory);
+      padding: 3rem 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .contact-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      gap: 2rem;
     }
-
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-      letter-spacing: 1px;
+    .contact-inner h2 {
+      font-size: clamp(1.8rem, 3vw, 3.1rem);
+      line-height: 1.05;
     }
-
-    nav a {
-      color: var(--color-white);
+    .contact-inner a {
+      color: var(--gold);
       text-decoration: none;
-      margin-left: 24px;
-      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .04em;
     }
 
-    nav a:hover {
-      text-decoration: underline;
+    .site-footer {
+      background: #0d0d0d;
+      color: rgba(244,238,228,.72);
+      padding: 1.8rem 0;
+      font-size: .85rem;
     }
-
-    .hero {
-      padding: 90px 8%;
-      background: linear-gradient(135deg, #1f3d3a 0%, #315f58 100%);
-      color: var(--color-white);
-    }
-
-    .hero h1 {
-      max-width: 850px;
-      font-size: 46px;
-      line-height: 1.15;
-      margin-bottom: 24px;
-    }
-
-    .hero p {
-      max-width: 720px;
-      font-size: 20px;
-      margin-bottom: 32px;
-    }
-
-    .button {
-      display: inline-block;
-      background-color: var(--color-secondary);
-      color: var(--color-text);
-      padding: 14px 24px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    section {
-      padding: 70px 8%;
-    }
-
-    .section-white {
-      background-color: var(--color-white);
-    }
-
-    h2 {
-      font-size: 32px;
-      margin-bottom: 24px;
-      color: var(--color-primary);
-    }
-
-    .intro {
-      max-width: 850px;
-      font-size: 18px;
-      color: var(--color-muted);
-    }
-
-    .cards {
+    .footer-inner {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-      margin-top: 36px;
+      grid-template-columns: 1fr 1.4fr 1fr;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .footer-brand img { width: 155px; filter: brightness(1.1); }
+    .footer-center { text-align: center; font-family: Georgia, 'Times New Roman', serif; font-size: 1.05rem; color: var(--ivory); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: .7rem 1rem; justify-content: flex-end; }
+    .footer-links a { color: var(--gold); text-decoration: none; }
+
+    @media (max-width: 1060px) {
+      .nav { gap: 1rem; font-size: .66rem; }
+      .areas-grid { grid-template-columns: repeat(3, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .founders-layout { grid-template-columns: 1fr; }
+      .founders-panel { border-right: 0; padding-right: 0; }
     }
 
-    .card {
-      background-color: var(--color-white);
-      padding: 28px;
-      border-radius: 10px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    }
-
-    .section-white .card {
-      background-color: var(--color-background);
-    }
-
-    .card h3 {
-      color: var(--color-primary);
-      margin-bottom: 12px;
-      font-size: 21px;
-    }
-
-    .card p {
-      color: var(--color-muted);
-      font-size: 16px;
-    }
-
-    .contact-box {
-      background-color: var(--color-primary);
-      color: var(--color-white);
-      padding: 40px;
-      border-radius: 12px;
-      max-width: 760px;
-    }
-
-    .contact-box h2 {
-      color: var(--color-white);
-    }
-
-    .contact-box p {
-      margin-bottom: 18px;
-      font-size: 18px;
-    }
-
-    .contact-box a {
-      color: var(--color-secondary);
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    footer {
-      padding: 28px 8%;
-      background-color: #172c2a;
-      color: var(--color-white);
-      font-size: 14px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    footer a {
-      color: var(--color-secondary);
-      text-decoration: none;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        display: block;
-      }
-
-      nav {
-        margin-top: 16px;
-      }
-
-      nav a {
-        display: inline-block;
-        margin: 0 14px 8px 0;
-      }
-
-      .hero h1 {
-        font-size: 34px;
-      }
-
-      .hero p {
-        font-size: 18px;
-      }
+    @media (max-width: 780px) {
+      .site-header { height: auto; padding: .8rem 0; position: sticky; }
+      .header-inner { width: min(100% - 30px, var(--max)); flex-direction: column; align-items: flex-start; }
+      .brand img { width: 150px; }
+      .nav { width: 100%; overflow-x: auto; padding-bottom: .3rem; gap: 1rem; }
+      .nav a { white-space: nowrap; }
+      .hero { min-height: 680px; padding-top: 0; }
+      .hero::before { background: linear-gradient(90deg, rgba(244,238,228,.96), rgba(244,238,228,.72)); }
+      .container, .hero-content, .footer-inner { width: min(100% - 30px, var(--max)); }
+      .split, .why-inner, .selective { grid-template-columns: 1fr; }
+      .split-copy { border-left: 0; padding: 2rem 0; }
+      .split-media img { min-height: 310px; }
+      .areas-grid { grid-template-columns: 1fr; }
+      .area-card { display: grid; grid-template-columns: 140px 1fr; gap: 1rem; padding-left: 0; border-left: 0; border-top: 1px solid var(--line); padding-top: 1rem; }
+      .area-card img { margin: 0; aspect-ratio: 1/1; }
+      .why-grid, .founder-cards, .statements { grid-template-columns: 1fr; }
+      .founder-card { grid-template-columns: 120px 1fr; }
+      .outlook-panel { padding: 2rem; min-height: 360px; }
+      .contact-inner { flex-direction: column; align-items: flex-start; }
+      .footer-inner { grid-template-columns: 1fr; text-align: left; }
+      .footer-center { text-align: left; }
+      .footer-links { justify-content: flex-start; }
     }
   </style>
 </head>
 
 <body>
-
-  <header>
-    <div class="logo">Shefa</div>
-    <nav>
-      <a href="#sobre-nosotras">Sobre nosotras</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#confianza">Confianza</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="SHEFA home">
+        <img src="assets/logo-shefa.png" alt="SHEFA - Scientific Health Exchange for Alliances" />
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#who-we-are">Who we are</a>
+        <a href="#strategic-areas">Strategic areas</a>
+        <a href="#why-shefa">Why SHEFA</a>
+        <a href="#founders">Founders</a>
+        <a href="#outlook">Outlook</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <h1>Gestión profesional, criterio y confianza para impulsar proyectos con sentido.</h1>
-      <p>
-        En Shefa acompañamos a empresas y profesionales en la organización, coordinación
-        y desarrollo de proyectos, aportando estructura, seguimiento y una forma de trabajar
-        basada en la confianza y la confidencialidad.
-      </p>
-      <a class="button" href="mailto:hola@shefa.es">Contactar con Shefa</a>
-    </section>
-
-    <section id="sobre-nosotras" class="section-white">
-      <h2>Sobre Shefa</h2>
-      <p class="intro">
-        Shefa nace con la voluntad de ofrecer un servicio cercano, profesional y riguroso.
-        Nuestro enfoque combina organización, acompañamiento y capacidad de adaptación
-        para ayudar a nuestros clientes a avanzar con mayor claridad en sus proyectos.
-      </p>
-    </section>
-
-    <section id="servicios">
-      <h2>Servicios</h2>
-      <p class="intro">
-        Esta primera versión de la web es provisional. Más adelante adaptaremos los textos
-        a la actividad exacta de la empresa y al tipo de cliente al que se dirigirá Shefa.
-      </p>
-
-      <div class="cards">
-        <div class="card">
-          <h3>Gestión de proyectos</h3>
-          <p>
-            Apoyo en la planificación, coordinación, seguimiento documental y control de tareas
-            para proyectos empresariales y profesionales.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Organización y procesos</h3>
-          <p>
-            Ayuda en la estructuración de información, definición de prioridades y mejora de la
-            forma de trabajar en entornos profesionales.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Acompañamiento profesional</h3>
-          <p>
-            Soporte cercano y confidencial para clientes que necesitan orden, criterio y continuidad
-            en la gestión de sus proyectos.
-          </p>
+  <main id="top">
+    <section class="hero" aria-label="SHEFA hero section">
+      <img class="hero-bg" src="assets/hero-section.webp" alt="Architectural healthcare collaboration setting at sunrise" />
+      <div class="hero-content">
+        <div class="hero-copy">
+          <h1 class="serif">Connecting biomedical innovation with the future of global healthcare.</h1>
+          <p>A strategic platform at the intersection of scientific diplomacy, healthcare ecosystems and international strategic partnerships.</p>
+          <div class="button-row">
+            <a class="btn btn-primary" href="#who-we-are">Explore SHEFA</a>
+            <a class="btn btn-secondary" href="#strategic-areas">Strategic Partnerships</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="confianza" class="section-white">
-      <h2>Confianza y confidencialidad</h2>
-      <p class="intro">
-        Sabemos que muchos proyectos requieren discreción, responsabilidad y un tratamiento
-        cuidadoso de la información. Por eso, Shefa trabaja con una visión orientada a la
-        confianza, la claridad y la protección de los datos de sus clientes.
-      </p>
-
-      <div class="cards">
-        <div class="card">
-          <h3>Trato cercano</h3>
-          <p>
-            Comunicación clara, seguimiento continuo y adaptación a las necesidades de cada cliente.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Rigor documental</h3>
-          <p>
-            Organización de la información y gestión ordenada de documentos, tareas y entregables.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Discreción</h3>
-          <p>
-            Enfoque profesional y prudente en el tratamiento de información sensible o confidencial.
-          </p>
+    <section id="who-we-are" class="split" aria-label="Who we are">
+      <div class="split-media">
+        <img src="assets/who-we-are.webp" alt="Two healthcare professionals speaking in an institutional corridor" />
+      </div>
+      <div class="split-copy">
+        <div class="eyebrow">Who we are</div>
+        <h2 class="serif">A strategic platform for international healthcare collaboration.</h2>
+        <div class="body-copy">
+          <p>SHEFA connects biomedical innovation, institutional ecosystems and international healthcare partnerships through strategic intelligence, scientific diplomacy and institutional execution.</p>
+          <p>Built through European expertise and Gulf institutional connectivity, SHEFA creates pathways between innovation, implementation and long-term institutional impact.</p>
         </div>
       </div>
     </section>
 
-    <section id="contacto">
-      <div class="contact-box">
-        <h2>Contacto</h2>
-        <p>
-          Si quieres contactar con Shefa, puedes escribirnos a:
-        </p>
-        <p>
-          <a href="mailto:hola@shefa.es">hola@shefa.es</a>
-        </p>
-        <p>
-          Próximamente ampliaremos esta sección con más información de contacto.
-        </p>
+    <section id="strategic-areas" class="section">
+      <div class="container">
+        <div class="areas-header">
+          <div class="eyebrow">Strategic areas</div>
+        </div>
+        <div class="areas-grid">
+          <article class="area-card">
+            <img src="assets/area-biomedical.webp" alt="Biomedical molecular structure" />
+            <div>
+              <div class="area-number">01</div>
+              <h3>Biomedical Innovation</h3>
+              <p>Strategic positioning and validation of biomedical technologies with international potential.</p>
+            </div>
+          </article>
+          <article class="area-card">
+            <img src="assets/area-diplomacy.webp" alt="Abstract institutional lattice structure" />
+            <div>
+              <div class="area-number">02</div>
+              <h3>Scientific Diplomacy</h3>
+              <p>Connecting institutions, healthcare ecosystems and international strategic stakeholders.</p>
+            </div>
+          </article>
+          <article class="area-card">
+            <img src="assets/area-partnerships.webp" alt="International institutional meeting environment" />
+            <div>
+              <div class="area-number">03</div>
+              <h3>International Healthcare Partnerships</h3>
+              <p>Facilitating high-value collaborations across hospitals, research centres and innovation ecosystems.</p>
+            </div>
+          </article>
+          <article class="area-card">
+            <img src="assets/area-market-access.webp" alt="Architectural gateway toward an international skyline" />
+            <div>
+              <div class="area-number">04</div>
+              <h3>Gulf &amp; International Market Access</h3>
+              <p>Institutional access to Gulf healthcare environments and international healthcare ecosystems.</p>
+            </div>
+          </article>
+          <article class="area-card">
+            <img src="assets/area-clinical-pilots.webp" alt="Advanced clinical operating room with innovation technology" />
+            <div>
+              <div class="area-number">05</div>
+              <h3>Clinical Pilots &amp; Innovation Activation</h3>
+              <p>Translating innovation into strategic pilots, institutional partnerships and implementation pathways.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="why-shefa" class="why" aria-label="Why SHEFA">
+      <img class="why-bg" src="assets/why-shefa.webp" alt="Dark architectural interior overlooking an international skyline" />
+      <div class="container why-inner">
+        <div>
+          <div class="eyebrow">Why SHEFA</div>
+          <h2 class="serif">A rare combination of institutional access, strategic intelligence and international execution.</h2>
+        </div>
+        <div class="why-grid">
+          <article class="why-item">
+            <svg class="why-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="32" cy="32" r="24"/><path d="M8 32h48M32 8c8 8 12 16 12 24s-4 16-12 24M32 8C24 16 20 24 20 32s4 16 12 24"/></svg>
+            <h3>Institutional Access</h3>
+            <p>Trusted relationships across healthcare, innovation and international ecosystems.</p>
+          </article>
+          <article class="why-item">
+            <svg class="why-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="32" cy="32" r="23"/><circle cx="32" cy="32" r="6"/><path d="M32 9v10M32 45v10M9 32h10M45 32h10"/></svg>
+            <h3>Strategic Intelligence</h3>
+            <p>Ability to translate complexity into structured opportunities and strategic initiatives.</p>
+          </article>
+          <article class="why-item">
+            <svg class="why-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="24" cy="30" r="14"/><circle cx="40" cy="30" r="14"/><circle cx="32" cy="42" r="14"/></svg>
+            <h3>Cross-Cultural Understanding</h3>
+            <p>Operational understanding of Gulf and international institutional environments.</p>
+          </article>
+          <article class="why-item">
+            <svg class="why-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 48 48 16M24 16h24v24"/></svg>
+            <h3>Execution</h3>
+            <p>Beyond strategy — activation, alignment and implementation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="founders" class="section">
+      <div class="container founders-layout">
+        <div class="founders-panel">
+          <div class="eyebrow">Founders</div>
+          <div class="founder-cards">
+            <article class="founder-card">
+              <img src="assets/founder-rania.webp" alt="Portrait of Rania El Ghauche" />
+              <div>
+                <h3>Rania El Ghauche</h3>
+                <p>International healthcare diplomacy, institutional partnerships and Gulf ecosystem development.</p>
+              </div>
+            </article>
+            <article class="founder-card">
+              <img src="assets/founder-ana.webp" alt="Portrait of Ana Garrido" />
+              <div>
+                <h3>Ana Garrido</h3>
+                <p>Strategic structuring, innovation ecosystems and activation of complex international initiatives.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div id="outlook" class="outlook-panel">
+          <img src="assets/international-outlook.webp" alt="International outlook bridge between institutional environments" />
+          <div class="outlook-copy">
+            <div class="eyebrow">International outlook</div>
+            <h2 class="serif">Built in Barcelona.<br />Designed for international healthcare ecosystems.</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Selective by design">
+      <div class="container selective">
+        <div class="selective-copy">
+          <div class="eyebrow">Selective by design</div>
+          <p>SHEFA operates through a highly selective collaboration model, prioritising strategic alignment, institutional value and long-term impact.</p>
+          <p style="margin-top:1rem;">We engage in projects where international connectivity, trusted relationships and execution create long-term institutional value.</p>
+        </div>
+        <div class="statements">
+          <article class="statement">
+            <div class="num">01</div>
+            <p>Strategic healthcare ecosystems require more than innovation alone.</p>
+          </article>
+          <article class="statement">
+            <div class="num">02</div>
+            <p>Trusted relationships shape healthcare transformation.</p>
+          </article>
+          <article class="statement">
+            <div class="num">03</div>
+            <p>Access, alignment and execution define the future of international healthcare collaboration.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-strip">
+      <div class="container contact-inner">
+        <h2 class="serif">Strategic Partnerships &amp;<br />International Collaborations</h2>
+        <div>
+          <p><a href="mailto:info@shefa.es">info@shefa.es</a></p>
+          <p style="margin-top:.35rem; color:rgba(244,238,228,.68);">Barcelona, Spain</p>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div>© 2026 Shefa. Todos los derechos reservados.</div>
-    <div>
-      <a href="#">Aviso legal</a> ·
-      <a href="#">Política de privacidad</a>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo-shefa.png" alt="SHEFA" />
+      </div>
+      <div class="footer-center">Scientific Health Exchange for Alliances</div>
+      <div class="footer-links">
+        <a href="mailto:info@shefa.es">Email</a>
+        <a href="#" aria-label="LinkedIn link pending">LinkedIn</a>
+        <a href="#" aria-label="Privacy policy pending">Privacy Policy</a>
+        <a href="#" aria-label="Legal notice pending">Legal Notice</a>
+      </div>
     </div>
   </footer>
-
 </body>
 </html>
