@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legal Notice | SHEFA</title>
+  <meta name="description" content="Legal Notice for SHEFA – Scientific Health Exchange for Alliances." />
+  <style>
+
+    :root {
+      --ivory: #f4eee4;
+      --ivory-2: #ebe1d3;
+      --sand: #d6c2a4;
+      --gold: #c7952f;
+      --gold-dark: #9f7425;
+      --ink: #141414;
+      --ink-soft: #2a2926;
+      --muted: #6f685f;
+      --line: rgba(20,20,20,.16);
+      --white: #ffffff;
+      --dark: #101010;
+      --dark-2: #1b1a17;
+      --max: 1240px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--ivory);
+      line-height: 1.58;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .serif { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: -.03em; }
+    .eyebrow { font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-dark); font-weight: 700; margin-bottom: 1.1rem; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      background: rgba(244,238,228,.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(20,20,20,.08);
+    }
+    .header-inner {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .brand img { width: 170px; height: auto; }
+    .nav-wrap { display: flex; align-items: center; gap: 1.2rem; }
+    .nav { display: flex; align-items: center; gap: 1.35rem; font-size: .72rem; letter-spacing: .11em; text-transform: uppercase; font-weight: 700; }
+    .nav a { text-decoration: none; position: relative; white-space: nowrap; }
+    .nav a::after { content: ''; position: absolute; left: 0; bottom: -7px; width: 0; height: 1px; background: var(--gold); transition: width .22s ease; }
+    .nav a:hover::after { width: 100%; }
+    .lang-switch { display: inline-flex; align-items: center; gap: .25rem; border: 1px solid rgba(20,20,20,.18); padding: .25rem; background: rgba(255,255,255,.35); }
+    .lang-switch button { border: 0; background: transparent; padding: .42rem .55rem; cursor: pointer; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+    .lang-switch button.active { color: var(--ivory); background: var(--ink); }
+    .page-hero { padding: 5.2rem 0 3.8rem; border-bottom: 1px solid var(--line); background: linear-gradient(135deg, var(--ivory) 0%, var(--ivory-2) 100%); }
+    .container { width: min(980px, calc(100% - 48px)); margin: 0 auto; }
+    .page-hero h1 { font-size: clamp(2.4rem, 5vw, 5.2rem); line-height: .98; margin-bottom: 1.4rem; }
+    .page-hero p { max-width: 760px; color: var(--ink-soft); font-size: 1.02rem; }
+    .legal-content { padding: 4rem 0 5rem; }
+    .legal-card { background: rgba(255,255,255,.38); border: 1px solid rgba(20,20,20,.08); padding: clamp(1.5rem, 4vw, 3rem); }
+    .legal-section { padding: 1.5rem 0; border-top: 1px solid var(--line); }
+    .legal-section:first-child { border-top: 0; padding-top: 0; }
+    .legal-section h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-size: clamp(1.35rem, 2vw, 2rem); line-height: 1.15; margin-bottom: .85rem; }
+    .legal-section p { margin: .6rem 0; color: var(--ink-soft); }
+    .legal-section ul { margin: .7rem 0 .7rem 1.25rem; color: var(--ink-soft); }
+    .legal-section li { margin: .35rem 0; }
+    .notice-box { margin: 1.2rem 0 0; padding: 1rem 1.15rem; border-left: 3px solid var(--gold); background: rgba(255,255,255,.45); color: var(--ink-soft); }
+    .lang-content[hidden] { display: none; }
+    .site-footer { background: #0d0d0d; color: rgba(244,238,228,.72); padding: 1.8rem 0; font-size: .85rem; }
+    .footer-inner { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; display: grid; grid-template-columns: 1fr 1.4fr 1fr; align-items: center; gap: 1.5rem; }
+    .footer-brand img { width: 155px; filter: brightness(1.1); }
+    .footer-center { text-align: center; font-family: Georgia, 'Times New Roman', serif; font-size: 1.05rem; color: var(--ivory); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: .7rem 1rem; justify-content: flex-end; }
+    .footer-links a { color: var(--gold); text-decoration: none; }
+    @media (max-width: 980px) {
+      .nav { gap: .9rem; font-size: .66rem; }
+      .nav-wrap { gap: .75rem; }
+    }
+    @media (max-width: 780px) {
+      .site-header { height: auto; padding: .8rem 0; }
+      .header-inner { width: min(100% - 30px, var(--max)); flex-direction: column; align-items: flex-start; }
+      .brand img { width: 150px; }
+      .nav-wrap { width: 100%; flex-direction: column; align-items: flex-start; gap: .8rem; }
+      .nav { width: 100%; overflow-x: auto; padding-bottom: .3rem; gap: 1rem; }
+      .container, .footer-inner { width: min(100% - 30px, var(--max)); }
+      .footer-inner { grid-template-columns: 1fr; text-align: left; }
+      .footer-center { text-align: left; }
+      .footer-links { justify-content: flex-start; }
+    }
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html#top" aria-label="SHEFA home">
+        <img src="assets/logo-shefa.png" alt="SHEFA - Scientific Health Exchange for Alliances" />
+      </a>
+      <div class="nav-wrap">
+        <nav class="nav" aria-label="Main navigation">
+          <a href="index.html#top" data-i18n="nav.home">Home</a>
+          <a href="index.html#who-we-are" data-i18n="nav.who">Who we are</a>
+          <a href="index.html#strategic-areas" data-i18n="nav.areas">Strategic areas</a>
+          <a href="index.html#why-shefa" data-i18n="nav.why">Why SHEFA</a>
+          <a href="index.html#founders" data-i18n="nav.founders">Founders</a>
+          <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+        </nav>
+        <div class="lang-switch" aria-label="Language selector">
+          <button type="button" data-lang="en" class="active">EN</button>
+          <button type="button" data-lang="es">ES</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="lang-content" data-content-lang="en">
+  <section class="page-hero"><div class="container"><div class="eyebrow">Legal Notice</div><h1 class="serif">Legal Notice</h1><p>Last updated: May 2026</p></div></section>
+  <main class="legal-content"><div class="container"><div class="legal-card">
+    <section class="legal-section"><h2>1. Website Owner</h2><p>In accordance with applicable information society and electronic commerce regulations, users are informed that this website is operated by:</p><p><strong>SHEFA – Scientific Health Exchange for Alliances</strong><br>Barcelona, Spain<br>Email: <a href="mailto:info@shefa.es">info@shefa.es</a></p><p>SHEFA operates as an international strategic platform focused on biomedical innovation, scientific diplomacy, healthcare ecosystems and international strategic partnerships.</p><p>The activities presented through this website are currently developed through the professional activities of the founders and may subsequently evolve into a dedicated corporate structure under the denomination SHEFA – Scientific Health Exchange for Alliances, S.L.</p></section>
+    <section class="legal-section"><h2>2. Purpose of the Website</h2><p>The purpose of this website is to provide information regarding SHEFA’s activities, strategic focus areas, international collaborations, institutional partnerships and related initiatives.</p><p>The content of this website is provided exclusively for general informational and professional purposes.</p><p>Nothing contained on this website shall be interpreted as a commitment, offer, guarantee of collaboration, institutional endorsement or assurance of project implementation.</p></section>
+    <section class="legal-section"><h2>3. Intellectual Property</h2><p>All contents of this website, including but not limited to texts, branding, trade names, logos, graphics, visual identity, proprietary methodologies, strategic frameworks, institutional approaches, operational models, structure, design elements and materials, are protected by applicable intellectual and industrial property laws and rights.</p><p>Any reproduction, distribution, transformation, public communication, extraction, reuse or use of the contents, in whole or in part, without prior written authorization from SHEFA is strictly prohibited.</p></section>
+    <section class="legal-section"><h2>4. Limitation of Liability</h2><p>SHEFA makes reasonable efforts to ensure that the information published on this website is accurate and up to date. However, SHEFA does not guarantee the completeness, accuracy, reliability or continuous availability of the website or its contents.</p><p>To the maximum extent permitted by applicable law, SHEFA shall not be liable for indirect, incidental, reputational, commercial or consequential damages arising from:</p><ul><li>access to or use of this website;</li><li>reliance on the information contained herein;</li><li>interruptions, technical failures or cybersecurity incidents;</li><li>business or strategic decisions adopted based on website content;</li><li>third-party websites, platforms or external content accessible through links.</li></ul><p>Users access and use this website at their own discretion and responsibility.</p></section>
+    <section class="legal-section"><h2>5. Professional Disclaimer</h2><p>SHEFA operates as a strategic, institutional and international collaboration platform.</p><p>The information contained on this website does not constitute medical, legal, financial, investment, regulatory or other regulated professional advice.</p><p>SHEFA does not represent governmental authorities, healthcare regulators or public institutions unless expressly stated in writing within the framework of a specific engagement.</p><p>Any strategic assessments, introductions, ecosystem analyses or collaboration opportunities presented through this website are provided for general strategic and informational purposes only and remain subject to independent evaluation, separate agreements and applicable legal or regulatory frameworks.</p><p>Any collaboration, partnership or project development shall remain subject to independent assessment, due diligence and formal contractual arrangements.</p></section>
+    <section class="legal-section"><h2>6. External Links</h2><p>This website may contain links to third-party websites, platforms or external resources for informational purposes.</p><p>SHEFA assumes no responsibility for the contents, policies, availability or practices of third-party websites or services.</p><p>The inclusion of external links does not imply endorsement, affiliation, partnership or approval by SHEFA.</p></section>
+    <section class="legal-section"><h2>7. Acceptable Use</h2><p>Users agree to access and use the website responsibly, lawfully and in accordance with applicable regulations.</p><p>Users may not:</p><ul><li>use the website for unlawful or unauthorized purposes;</li><li>introduce malicious software or attempt unauthorized access;</li><li>damage, disrupt or overload the website infrastructure;</li><li>infringe intellectual or industrial property rights;</li><li>use website contents in a misleading, unlawful or reputationally harmful manner.</li></ul></section>
+    <section class="legal-section"><h2>8. Data Protection</h2><p>The processing of personal data collected through this website is governed by the <a href="privacy-policy.html">Privacy Policy</a> available on this website.</p></section>
+    <section class="legal-section"><h2>9. Applicable Law and Jurisdiction</h2><p>This Legal Notice shall be governed by and interpreted in accordance with Spanish law.</p><p>Any dispute arising in connection with this website shall be submitted to the Courts and Tribunals of Barcelona, Spain, unless otherwise required by applicable consumer protection regulations.</p><p>SHEFA reserves the right to update or modify this Legal Notice at any time in accordance with legal, operational or strategic developments.</p></section>
+  </div></div></main>
+</div>
+
+<div class="lang-content" data-content-lang="es" hidden>
+  <section class="page-hero"><div class="container"><div class="eyebrow">Aviso legal</div><h1 class="serif">Aviso legal</h1><p>Última actualización: mayo de 2026</p></div></section>
+  <main class="legal-content"><div class="container"><div class="legal-card">
+    <div class="notice-box">Versión en español preparada para la web. Los datos societarios pendientes, como CIF/NIF o datos registrales, podrán añadirse cuando SHEFA disponga de ellos.</div>
+    <section class="legal-section"><h2>1. Titular del sitio web</h2><p>En cumplimiento de la normativa aplicable en materia de servicios de la sociedad de la información y comercio electrónico, se informa a los usuarios de que este sitio web es operado por:</p><p><strong>SHEFA – Scientific Health Exchange for Alliances</strong><br>Barcelona, España<br>Email: <a href="mailto:info@shefa.es">info@shefa.es</a></p><p>SHEFA opera como una plataforma estratégica internacional centrada en la innovación biomédica, la diplomacia científica, los ecosistemas sanitarios y las alianzas estratégicas internacionales.</p><p>Las actividades presentadas a través de este sitio web se desarrollan actualmente mediante la actividad profesional de sus fundadoras y podrán evolucionar posteriormente hacia una estructura societaria específica bajo la denominación SHEFA – Scientific Health Exchange for Alliances, S.L.</p></section>
+    <section class="legal-section"><h2>2. Finalidad del sitio web</h2><p>La finalidad de este sitio web es proporcionar información sobre las actividades de SHEFA, sus áreas estratégicas, colaboraciones internacionales, alianzas institucionales e iniciativas relacionadas.</p><p>El contenido del sitio web se facilita exclusivamente con fines informativos generales y profesionales.</p><p>Nada de lo contenido en este sitio web deberá interpretarse como compromiso, oferta, garantía de colaboración, respaldo institucional o garantía de ejecución de proyectos.</p></section>
+    <section class="legal-section"><h2>3. Propiedad intelectual</h2><p>Todos los contenidos de este sitio web, incluidos, entre otros, textos, marca, nombres comerciales, logotipos, gráficos, identidad visual, metodologías propias, marcos estratégicos, enfoques institucionales, modelos operativos, estructura, elementos de diseño y materiales, están protegidos por la normativa aplicable en materia de propiedad intelectual e industrial.</p><p>Queda estrictamente prohibida cualquier reproducción, distribución, transformación, comunicación pública, extracción, reutilización o uso total o parcial de los contenidos sin autorización previa y por escrito de SHEFA.</p></section>
+    <section class="legal-section"><h2>4. Limitación de responsabilidad</h2><p>SHEFA realiza esfuerzos razonables para garantizar que la información publicada en este sitio web sea precisa y esté actualizada. No obstante, SHEFA no garantiza la integridad, exactitud, fiabilidad ni disponibilidad continua del sitio web o de sus contenidos.</p><p>En la máxima medida permitida por la ley aplicable, SHEFA no será responsable de daños indirectos, incidentales, reputacionales, comerciales o consecuenciales derivados de:</p><ul><li>el acceso o uso de este sitio web;</li><li>la confianza depositada en la información contenida en el mismo;</li><li>interrupciones, fallos técnicos o incidentes de ciberseguridad;</li><li>decisiones empresariales o estratégicas adoptadas con base en el contenido del sitio web;</li><li>sitios web, plataformas o contenidos externos de terceros accesibles mediante enlaces.</li></ul><p>Los usuarios acceden y utilizan este sitio web bajo su propia discreción y responsabilidad.</p></section>
+    <section class="legal-section"><h2>5. Exclusión de asesoramiento profesional</h2><p>SHEFA opera como una plataforma estratégica, institucional y de colaboración internacional.</p><p>La información contenida en este sitio web no constituye asesoramiento médico, legal, financiero, de inversión, regulatorio ni ningún otro asesoramiento profesional regulado.</p><p>SHEFA no representa a autoridades gubernamentales, reguladores sanitarios ni instituciones públicas salvo que se indique expresamente por escrito en el marco de un encargo específico.</p><p>Cualquier evaluación estratégica, presentación, análisis de ecosistema u oportunidad de colaboración expuesta a través de este sitio web se proporciona exclusivamente con fines estratégicos e informativos generales y queda sujeta a evaluación independiente, acuerdos separados y marcos legales o regulatorios aplicables.</p><p>Cualquier colaboración, alianza o desarrollo de proyecto quedará sujeto a evaluación independiente, diligencia debida y acuerdos contractuales formales.</p></section>
+    <section class="legal-section"><h2>6. Enlaces externos</h2><p>Este sitio web puede contener enlaces a sitios web, plataformas o recursos externos de terceros con fines informativos.</p><p>SHEFA no asume responsabilidad por los contenidos, políticas, disponibilidad o prácticas de sitios web o servicios de terceros.</p><p>La inclusión de enlaces externos no implica respaldo, afiliación, asociación o aprobación por parte de SHEFA.</p></section>
+    <section class="legal-section"><h2>7. Uso aceptable</h2><p>Los usuarios se comprometen a acceder y utilizar el sitio web de forma responsable, lícita y conforme a la normativa aplicable.</p><p>Los usuarios no podrán:</p><ul><li>utilizar el sitio web con fines ilícitos o no autorizados;</li><li>introducir software malicioso o intentar accesos no autorizados;</li><li>dañar, interrumpir o sobrecargar la infraestructura del sitio web;</li><li>infringir derechos de propiedad intelectual o industrial;</li><li>utilizar los contenidos del sitio web de forma engañosa, ilícita o perjudicial para la reputación.</li></ul></section>
+    <section class="legal-section"><h2>8. Protección de datos</h2><p>El tratamiento de los datos personales recogidos a través de este sitio web se rige por la <a href="privacy-policy.html">Política de privacidad</a> disponible en este sitio web.</p></section>
+    <section class="legal-section"><h2>9. Ley aplicable y jurisdicción</h2><p>Este Aviso legal se regirá e interpretará de conformidad con la legislación española.</p><p>Cualquier controversia derivada de este sitio web se someterá a los Juzgados y Tribunales de Barcelona, España, salvo que la normativa aplicable en materia de protección de consumidores disponga otra cosa.</p><p>SHEFA se reserva el derecho a actualizar o modificar este Aviso legal en cualquier momento de acuerdo con la evolución legal, operativa o estratégica.</p></section>
+  </div></div></main>
+</div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo-shefa.png" alt="SHEFA" />
+      </div>
+      <div class="footer-center">Scientific Health Exchange for Alliances</div>
+      <div class="footer-links">
+        <a href="mailto:info@shefa.es" data-i18n="footer.email">Email</a>
+        <a href="#" aria-label="LinkedIn link pending">LinkedIn</a>
+        <a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="legal-notice.html" data-i18n="footer.legal">Legal Notice</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+
+    const translations = {
+      en: {
+        "nav.home": "Home",
+        "nav.who": "Who we are",
+        "nav.areas": "Strategic areas",
+        "nav.why": "Why SHEFA",
+        "nav.founders": "Founders",
+        "nav.contact": "Contact",
+        "footer.email": "Email",
+        "footer.privacy": "Privacy Policy",
+        "footer.legal": "Legal Notice",
+        "page.lastUpdated": "Last updated: May 2026",
+        "page.return": "Back to SHEFA"
+      },
+      es: {
+        "nav.home": "Inicio",
+        "nav.who": "Quiénes somos",
+        "nav.areas": "Áreas estratégicas",
+        "nav.why": "Por qué SHEFA",
+        "nav.founders": "Fundadoras",
+        "nav.contact": "Contacto",
+        "footer.email": "Email",
+        "footer.privacy": "Política de privacidad",
+        "footer.legal": "Aviso legal",
+        "page.lastUpdated": "Última actualización: mayo de 2026",
+        "page.return": "Volver a SHEFA"
+      }
+    };
+    function setLanguage(lang) {
+      const dictionary = translations[lang] || translations.en;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach((node) => {
+        const key = node.getAttribute('data-i18n');
+        if (dictionary[key]) node.innerHTML = dictionary[key];
+      });
+      document.querySelectorAll('[data-content-lang]').forEach((node) => {
+        node.hidden = node.getAttribute('data-content-lang') !== lang;
+      });
+      document.querySelectorAll('.lang-switch button').forEach((button) => {
+        button.classList.toggle('active', button.dataset.lang === lang);
+      });
+      localStorage.setItem('shefaLanguage', lang);
+    }
+    document.querySelectorAll('.lang-switch button').forEach((button) => {
+      button.addEventListener('click', () => setLanguage(button.dataset.lang));
+    });
+    setLanguage(localStorage.getItem('shefaLanguage') || 'en');
+
+  </script>
+</body>
+</html>

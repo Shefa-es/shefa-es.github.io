@@ -485,39 +485,6 @@
     .footer-links { display: flex; flex-wrap: wrap; gap: .7rem 1rem; justify-content: flex-end; }
     .footer-links a { color: var(--gold); text-decoration: none; }
 
-
-    .back-to-top {
-      position: fixed;
-      right: 1.25rem;
-      bottom: 1.25rem;
-      z-index: 30;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: .45rem;
-      min-height: 42px;
-      padding: .75rem 1rem;
-      border: 1px solid rgba(199,149,47,.62);
-      color: var(--ivory);
-      background: rgba(16,16,16,.82);
-      backdrop-filter: blur(10px);
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-size: .68rem;
-      font-weight: 700;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(8px);
-      transition: opacity .22s ease, transform .22s ease, background .22s ease;
-    }
-    .back-to-top.visible {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-    .back-to-top:hover { background: var(--ink); }
-
     @media (max-width: 1120px) {
       .nav { gap: .9rem; font-size: .66rem; }
       .nav-wrap { gap: .75rem; }
@@ -564,7 +531,6 @@
       .footer-inner { grid-template-columns: 1fr; text-align: left; }
       .footer-center { text-align: left; }
       .footer-links { justify-content: flex-start; }
-      .back-to-top { right: .9rem; bottom: .9rem; padding: .65rem .85rem; }
     }
   </style>
 </head>
@@ -789,15 +755,13 @@
       </div>
       <div class="footer-center">Scientific Health Exchange for Alliances</div>
       <div class="footer-links">
-        <a href="mailto:info@shefa.es">Email</a>
+        <a href="mailto:info@shefa.es" data-i18n="footer.email">Email</a>
         <a href="#" aria-label="LinkedIn link pending">LinkedIn</a>
-        <a href="#" aria-label="Privacy policy pending" data-i18n="footer.privacy">Privacy Policy</a>
-        <a href="#" aria-label="Legal notice pending" data-i18n="footer.legal">Legal Notice</a>
+        <a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="legal-notice.html" data-i18n="footer.legal">Legal Notice</a>
       </div>
     </div>
   </footer>
-
-  <a class="back-to-top" href="#top" data-i18n="nav.home" aria-label="Back to top">Home</a>
 
   <script>
     const translations = {
@@ -852,6 +816,7 @@
         "selective.s3": "Access, alignment and execution define the future of international healthcare collaboration.",
         "contact.title": "Strategic Partnerships &<br />International Collaborations",
         "contact.location": "Barcelona, Spain",
+        "footer.email": "Email",
         "footer.privacy": "Privacy Policy",
         "footer.legal": "Legal Notice"
       },
@@ -906,6 +871,7 @@
         "selective.s3": "Acceso, alineación y ejecución definen el futuro de la colaboración sanitaria internacional.",
         "contact.title": "Alianzas estratégicas y<br />colaboraciones internacionales",
         "contact.location": "Barcelona, España",
+        "footer.email": "Email",
         "footer.privacy": "Política de privacidad",
         "footer.legal": "Aviso legal"
       }
@@ -955,14 +921,6 @@
         history.pushState(null, '', hash);
       });
     });
-
-    const backToTop = document.querySelector('.back-to-top');
-    function toggleBackToTop() {
-      if (!backToTop) return;
-      backToTop.classList.toggle('visible', window.scrollY > 620);
-    }
-    window.addEventListener('scroll', toggleBackToTop, { passive: true });
-    toggleBackToTop();
 
     setLanguage(localStorage.getItem('shefaLanguage') || 'en');
   </script>
