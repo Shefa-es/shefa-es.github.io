@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookie Policy | SHEFA</title>
+  <meta name="description" content="Cookie Policy for SHEFA – Scientific Health Exchange for Alliances." />
+  <style>
+
+    :root {
+      --ivory: #f4eee4;
+      --ivory-2: #ebe1d3;
+      --sand: #d6c2a4;
+      --gold: #c7952f;
+      --gold-dark: #9f7425;
+      --ink: #141414;
+      --ink-soft: #2a2926;
+      --muted: #6f685f;
+      --line: rgba(20,20,20,.16);
+      --white: #ffffff;
+      --dark: #101010;
+      --dark-2: #1b1a17;
+      --max: 1240px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--ivory);
+      line-height: 1.58;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .serif { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: -.03em; }
+    .eyebrow { font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-dark); font-weight: 700; margin-bottom: 1.1rem; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      background: rgba(244,238,228,.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(20,20,20,.08);
+    }
+    .header-inner {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .brand img { width: 170px; height: auto; }
+    .nav-wrap { display: flex; align-items: center; gap: 1.2rem; }
+    .nav { display: flex; align-items: center; gap: 1.35rem; font-size: .72rem; letter-spacing: .11em; text-transform: uppercase; font-weight: 700; }
+    .nav a { text-decoration: none; position: relative; white-space: nowrap; }
+    .nav a::after { content: ''; position: absolute; left: 0; bottom: -7px; width: 0; height: 1px; background: var(--gold); transition: width .22s ease; }
+    .nav a:hover::after { width: 100%; }
+    .lang-switch { display: inline-flex; align-items: center; gap: .25rem; border: 1px solid rgba(20,20,20,.18); padding: .25rem; background: rgba(255,255,255,.35); }
+    .lang-switch button { border: 0; background: transparent; padding: .42rem .55rem; cursor: pointer; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+    .lang-switch button.active { color: var(--ivory); background: var(--ink); }
+    .page-hero { padding: 5.2rem 0 3.8rem; border-bottom: 1px solid var(--line); background: linear-gradient(135deg, var(--ivory) 0%, var(--ivory-2) 100%); }
+    .container { width: min(980px, calc(100% - 48px)); margin: 0 auto; }
+    .page-hero h1 { font-size: clamp(2.4rem, 5vw, 5.2rem); line-height: .98; margin-bottom: 1.4rem; }
+    .page-hero p { max-width: 760px; color: var(--ink-soft); font-size: 1.02rem; }
+    .legal-content { padding: 4rem 0 5rem; }
+    .legal-card { background: rgba(255,255,255,.38); border: 1px solid rgba(20,20,20,.08); padding: clamp(1.5rem, 4vw, 3rem); }
+    .legal-section { padding: 1.5rem 0; border-top: 1px solid var(--line); }
+    .legal-section:first-child { border-top: 0; padding-top: 0; }
+    .legal-section h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-size: clamp(1.35rem, 2vw, 2rem); line-height: 1.15; margin-bottom: .85rem; }
+    .legal-section p { margin: .6rem 0; color: var(--ink-soft); }
+    .legal-section ul { margin: .7rem 0 .7rem 1.25rem; color: var(--ink-soft); }
+    .legal-section li { margin: .35rem 0; }
+    .notice-box { margin: 1.2rem 0 0; padding: 1rem 1.15rem; border-left: 3px solid var(--gold); background: rgba(255,255,255,.45); color: var(--ink-soft); }
+    .lang-content[hidden] { display: none; }
+    .site-footer { background: #0d0d0d; color: rgba(244,238,228,.72); padding: 1.8rem 0; font-size: .85rem; }
+    .footer-inner { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; display: grid; grid-template-columns: 1fr 1.4fr 1fr; align-items: center; gap: 1.5rem; }
+    .footer-brand img { width: 155px; filter: brightness(1.1); }
+    .footer-center { text-align: center; font-family: Georgia, 'Times New Roman', serif; font-size: 1.05rem; color: var(--ivory); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: .7rem 1rem; justify-content: flex-end; }
+    .footer-links a { color: var(--gold); text-decoration: none; }
+    @media (max-width: 980px) {
+      .nav { gap: .9rem; font-size: .66rem; }
+      .nav-wrap { gap: .75rem; }
+    }
+    @media (max-width: 780px) {
+      .site-header { height: auto; padding: .8rem 0; }
+      .header-inner { width: min(100% - 30px, var(--max)); flex-direction: column; align-items: flex-start; }
+      .brand img { width: 150px; }
+      .nav-wrap { width: 100%; flex-direction: column; align-items: flex-start; gap: .8rem; }
+      .nav { width: 100%; overflow-x: auto; padding-bottom: .3rem; gap: 1rem; }
+      .container, .footer-inner { width: min(100% - 30px, var(--max)); }
+      .footer-inner { grid-template-columns: 1fr; text-align: left; }
+      .footer-center { text-align: left; }
+      .footer-links { justify-content: flex-start; }
+    }
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html#top" aria-label="SHEFA home">
+        <img src="assets/logo-shefa.png" alt="SHEFA - Scientific Health Exchange for Alliances" />
+      </a>
+      <div class="nav-wrap">
+        <nav class="nav" aria-label="Main navigation">
+          <a href="index.html#top" data-i18n="nav.home">Home</a>
+          <a href="index.html#who-we-are" data-i18n="nav.who">Who we are</a>
+          <a href="index.html#strategic-areas" data-i18n="nav.areas">Strategic areas</a>
+          <a href="index.html#why-shefa" data-i18n="nav.why">Why SHEFA</a>
+          <a href="index.html#founders" data-i18n="nav.founders">Founders</a>
+          <a href="index.html#outlook" data-i18n="nav.outlook">Outlook</a>
+          <a href="index.html#selective" data-i18n="nav.selective">Selective by design</a>
+          <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+        </nav>
+        <div class="lang-switch" aria-label="Language selector">
+          <button type="button" data-lang="en" class="active">EN</button>
+          <button type="button" data-lang="es">ES</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="lang-content" data-content-lang="en">
+    <section class="page-hero"><div class="container"><div class="eyebrow">Cookie Policy</div><h1 class="serif">Cookie Policy</h1><p>Last updated: May 2026</p></div></section>
+    <main class="legal-content"><div class="container"><div class="legal-card">
+      <section class="legal-section"><h2>1. Introduction</h2><p>This Cookie Policy explains how SHEFA – Scientific Health Exchange for Alliances (“SHEFA”, “we”, “our”) uses cookies and similar technologies on this website.</p><p>At this initial stage, the website is a static corporate website and does not use analytics, advertising or profiling cookies.</p></section>
+      <section class="legal-section"><h2>2. Technologies currently used</h2><p>The website may use strictly necessary or preference-based local browser storage to remember the user’s selected language. This helps display the website in the language chosen by the user.</p><p>This preference is stored locally in the user’s browser under the key <strong>shefaLanguage</strong>. It is not used for advertising, analytics or profiling purposes.</p></section>
+      <section class="legal-section"><h2>3. Technical operation of the website</h2><p>The website is hosted as a static website and may rely on technical infrastructure providers required for website delivery, security, DNS resolution and availability.</p><p>Such technical elements are necessary for the website to function and are not used by SHEFA to create commercial profiles of visitors.</p></section>
+      <section class="legal-section"><h2>4. Contact form</h2><p>The contact form may send information to SHEFA through Google Workspace / Google Apps Script infrastructure and may store the submitted message in a Google Sheet for internal follow-up.</p><p>The contact form is not used for advertising tracking. Personal data submitted through the form is governed by the <a href="privacy-policy.html">Privacy Policy</a>.</p></section>
+      <section class="legal-section"><h2>5. Analytics and third-party tools</h2><p>SHEFA does not currently use Google Analytics, advertising pixels, behavioural profiling tools or third-party tracking technologies on this website.</p><p>If analytics, embedded third-party content, advertising pixels, scheduling tools or similar technologies are added in the future, this Cookie Policy will be updated and, where required, a consent management mechanism will be implemented.</p></section>
+      <section class="legal-section"><h2>6. How to manage browser storage</h2><p>Users may delete cookies and local storage from their browser settings at any time. Deleting local storage may reset the language preference selected on the website.</p></section>
+      <section class="legal-section"><h2>7. Contact</h2><p>For questions regarding this Cookie Policy, users may contact SHEFA at: <a href="mailto:info@shefa.es">info@shefa.es</a></p></section>
+    </div></div></main>
+  </div>
+
+  <div class="lang-content" data-content-lang="es" hidden>
+    <section class="page-hero"><div class="container"><div class="eyebrow">Política de cookies</div><h1 class="serif">Política de cookies</h1><p>Última actualización: mayo de 2026</p></div></section>
+    <main class="legal-content"><div class="container"><div class="legal-card">
+      <section class="legal-section"><h2>1. Introducción</h2><p>Esta Política de cookies explica cómo SHEFA – Scientific Health Exchange for Alliances (“SHEFA”, “nosotros”, “nuestro”) utiliza cookies y tecnologías similares en este sitio web.</p><p>En esta fase inicial, la web es una página corporativa estática y no utiliza cookies analíticas, publicitarias ni de perfilado.</p></section>
+      <section class="legal-section"><h2>2. Tecnologías utilizadas actualmente</h2><p>El sitio web puede utilizar almacenamiento local del navegador estrictamente necesario o basado en preferencias para recordar el idioma seleccionado por el usuario. Esto permite mostrar la web en el idioma elegido.</p><p>Esta preferencia se guarda localmente en el navegador del usuario con la clave <strong>shefaLanguage</strong>. No se utiliza con fines publicitarios, analíticos ni de perfilado.</p></section>
+      <section class="legal-section"><h2>3. Funcionamiento técnico de la web</h2><p>La web está alojada como sitio estático y puede apoyarse en proveedores técnicos necesarios para la entrega de la página, seguridad, resolución DNS y disponibilidad.</p><p>Estos elementos técnicos son necesarios para el funcionamiento de la web y SHEFA no los utiliza para crear perfiles comerciales de los visitantes.</p></section>
+      <section class="legal-section"><h2>4. Formulario de contacto</h2><p>El formulario de contacto puede enviar información a SHEFA mediante infraestructura de Google Workspace / Google Apps Script y puede guardar el mensaje enviado en una Google Sheet para su seguimiento interno.</p><p>El formulario de contacto no se utiliza para seguimiento publicitario. Los datos personales enviados mediante el formulario se regulan por la <a href="privacy-policy.html">Política de privacidad</a>.</p></section>
+      <section class="legal-section"><h2>5. Analítica y herramientas de terceros</h2><p>SHEFA no utiliza actualmente Google Analytics, píxeles publicitarios, herramientas de perfilado conductual ni tecnologías de seguimiento de terceros en esta web.</p><p>Si en el futuro se incorporan herramientas de analítica, contenido embebido de terceros, píxeles publicitarios, herramientas de reserva u otras tecnologías similares, esta Política de cookies será actualizada y, cuando sea necesario, se implantará un mecanismo de gestión del consentimiento.</p></section>
+      <section class="legal-section"><h2>6. Cómo gestionar el almacenamiento del navegador</h2><p>Los usuarios pueden eliminar cookies y almacenamiento local desde la configuración de su navegador en cualquier momento. Al eliminar el almacenamiento local, puede restablecerse la preferencia de idioma seleccionada en la web.</p></section>
+      <section class="legal-section"><h2>7. Contacto</h2><p>Para cualquier cuestión relativa a esta Política de cookies, los usuarios pueden contactar con SHEFA en: <a href="mailto:info@shefa.es">info@shefa.es</a></p></section>
+    </div></div></main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand"><img src="assets/logo-shefa.png" alt="SHEFA" /></div>
+      <div class="footer-center">Scientific Health Exchange for Alliances</div>
+      <div class="footer-links">
+        <a href="mailto:info@shefa.es" data-i18n="footer.email">Email</a>
+        <a href="#" aria-label="LinkedIn link pending">LinkedIn</a>
+        <a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="legal-notice.html" data-i18n="footer.legal">Legal Notice</a>
+        <a href="cookie-policy.html" data-i18n="footer.cookies">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        "nav.home": "Home", "nav.who": "Who we are", "nav.areas": "Strategic areas", "nav.why": "Why SHEFA", "nav.founders": "Founders", "nav.outlook": "Outlook", "nav.selective": "Selective by design", "nav.contact": "Contact",
+        "footer.email": "Email", "footer.privacy": "Privacy Policy", "footer.legal": "Legal Notice", "footer.cookies": "Cookie Policy"
+      },
+      es: {
+        "nav.home": "Inicio", "nav.who": "Quiénes somos", "nav.areas": "Áreas estratégicas", "nav.why": "Por qué SHEFA", "nav.founders": "Fundadoras", "nav.outlook": "Proyección", "nav.selective": "Selectiva por diseño", "nav.contact": "Contacto",
+        "footer.email": "Email", "footer.privacy": "Política de privacidad", "footer.legal": "Aviso legal", "footer.cookies": "Política de cookies"
+      }
+    };
+    function setLanguage(lang) {
+      const dictionary = translations[lang] || translations.en;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach((node) => {
+        const key = node.getAttribute('data-i18n');
+        if (dictionary[key]) node.innerHTML = dictionary[key];
+      });
+      document.querySelectorAll('[data-content-lang]').forEach((node) => { node.hidden = node.getAttribute('data-content-lang') !== lang; });
+      document.querySelectorAll('.lang-switch button').forEach((button) => { button.classList.toggle('active', button.dataset.lang === lang); });
+      localStorage.setItem('shefaLanguage', lang);
+    }
+    document.querySelectorAll('.lang-switch button').forEach((button) => { button.addEventListener('click', () => setLanguage(button.dataset.lang)); });
+    setLanguage(localStorage.getItem('shefaLanguage') || 'en');
+  </script>
+</body>
+</html>
