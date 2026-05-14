@@ -1097,7 +1097,163 @@
       }
     }
 
-  </style>
+  
+
+    /* =========================================================
+       MOBILE IMAGE FIT FIX — v2
+       - Shows Home and Outlook images complete on mobile.
+       - Forces Founder text below the image with solid background.
+       ========================================================= */
+
+    @media (max-width: 780px) {
+      /* HOME / HERO: keep the existing structure but stop cropping the image */
+      .hero {
+        min-height: 640px !important;
+        background: var(--ivory) !important;
+        overflow: hidden !important;
+      }
+
+      .hero-bg {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        background: var(--ivory) !important;
+        filter: saturate(.9) contrast(.96) brightness(1.03) !important;
+      }
+
+      .hero::before {
+        background: linear-gradient(90deg,
+          rgba(244,238,228,.96) 0%,
+          rgba(244,238,228,.82) 43%,
+          rgba(244,238,228,.35) 100%) !important;
+      }
+
+      .hero-content {
+        position: relative !important;
+        z-index: 2 !important;
+      }
+
+      /* FOUNDERS: definitive mobile stack, no overlay and no text behind image */
+      .founder-cards {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1.35rem !important;
+      }
+
+      .founder-card {
+        display: block !important;
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        background: rgba(244, 238, 228, 0.98) !important;
+        border: 1px solid rgba(20,20,20,.08) !important;
+      }
+
+      .founder-card img {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        aspect-ratio: auto !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        margin: 0 !important;
+        z-index: auto !important;
+        opacity: .74 !important;
+      }
+
+      .founder-text {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        min-height: 0 !important;
+        padding: 1.35rem 1.25rem 1.55rem !important;
+        margin: 0 !important;
+        background: rgba(244, 238, 228, 1) !important;
+        color: var(--ink) !important;
+        z-index: auto !important;
+      }
+
+      .founder-card h3 {
+        color: var(--ink) !important;
+        opacity: 1 !important;
+        font-size: 2rem !important;
+        line-height: 1.05 !important;
+        margin: 0 0 .85rem !important;
+      }
+
+      .founder-card p {
+        color: var(--ink-soft) !important;
+        opacity: 1 !important;
+        max-width: none !important;
+        font-size: .98rem !important;
+        line-height: 1.55 !important;
+        margin: 0 !important;
+      }
+
+      /* OUTLOOK: show the complete image instead of cropping it */
+      .outlook-panel {
+        display: block !important;
+        min-height: 0 !important;
+        height: auto !important;
+        padding: 0 !important;
+        background: var(--dark) !important;
+        overflow: hidden !important;
+      }
+
+      .outlook-panel::before {
+        display: none !important;
+      }
+
+      .outlook-panel img {
+        position: static !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        opacity: .78 !important;
+      }
+
+      .outlook-copy {
+        position: static !important;
+        max-width: none !important;
+        padding: 1.6rem 1.45rem 1.8rem !important;
+        background: var(--dark) !important;
+        color: var(--ivory) !important;
+      }
+
+      .outlook-copy h2 {
+        font-size: clamp(2rem, 10vw, 3.25rem) !important;
+        line-height: 1.02 !important;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero {
+        min-height: 610px !important;
+      }
+
+      .hero-bg {
+        object-position: center center !important;
+      }
+
+      .founder-card h3 {
+        font-size: 1.85rem !important;
+      }
+
+      .outlook-copy {
+        padding: 1.4rem 1.25rem 1.6rem !important;
+      }
+    }
+</style>
 </head>
 
 <body>
