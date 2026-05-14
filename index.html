@@ -685,6 +685,264 @@
       .footer-center { text-align: left; }
       .footer-links { justify-content: flex-start; }
     }
+    /* =========================
+   MOBILE / RESPONSIVE FIXES
+   ========================= */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Tablets y móvil grande */
+@media (max-width: 980px) {
+
+  .site-header {
+    height: auto;
+    min-height: auto;
+  }
+
+  .header-inner {
+    width: calc(100% - 28px);
+    padding: 0.85rem 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .brand img {
+    width: 145px;
+  }
+
+  .nav-wrap {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+
+  .nav {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 0.4rem;
+    font-size: 0.66rem;
+    scrollbar-width: none;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .lang-switch {
+    align-self: flex-start;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 6.5rem 0 3.5rem;
+    background-position: center;
+  }
+
+  .hero-inner {
+    width: calc(100% - 30px);
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: clamp(2.7rem, 12vw, 4.4rem);
+    line-height: 0.95;
+    max-width: 100%;
+  }
+
+  .hero-text {
+    max-width: 100%;
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .split-media {
+    min-height: 360px;
+  }
+
+  .split-content {
+    padding: 3rem 1.2rem;
+  }
+
+  .split-content h2,
+  .section-title,
+  .why-title,
+  .outlook-title,
+  .contact-title {
+    font-size: clamp(2.1rem, 9vw, 3.5rem);
+    line-height: 1;
+  }
+
+  .areas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .area-card {
+    border-left: none;
+    border-top: 1px solid rgba(20, 20, 20, 0.12);
+    padding: 1.25rem 0;
+  }
+
+  .area-card img {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .why-items {
+    grid-template-columns: 1fr;
+  }
+
+  .founders-grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+
+  .founder-card {
+    grid-template-columns: 1fr;
+  }
+
+  .founder-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  .outlook-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .outlook-media,
+  .outlook-video {
+    min-height: 320px;
+  }
+
+  .selective-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .selective-points {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    text-align: left;
+    gap: 1.2rem;
+  }
+
+  .footer-center {
+    text-align: left;
+  }
+
+  .footer-links {
+    justify-content: flex-start;
+  }
+
+  .contact-modal {
+    width: min(100%, 94vw);
+    max-height: calc(100vh - 24px);
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Móvil pequeño */
+@media (max-width: 560px) {
+
+  .hero {
+    padding: 5.8rem 0 3rem;
+  }
+
+  .section,
+  .founders-section,
+  .outlook-section,
+  .selective-section {
+    padding: 3rem 0;
+  }
+
+  .container,
+  .section-inner,
+  .footer-inner {
+    width: calc(100% - 28px);
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 14vw, 3.6rem);
+  }
+
+  .split-media {
+    min-height: 300px;
+  }
+
+  .split-content {
+    padding: 2.4rem 1rem;
+  }
+
+  .area-card img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .founder-card {
+    padding: 0.75rem;
+  }
+
+  .founder-card h3 {
+    font-size: 2rem;
+  }
+
+  .modal-header,
+  .contact-form {
+    padding: 1.4rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+}
   </style>
 </head>
 
