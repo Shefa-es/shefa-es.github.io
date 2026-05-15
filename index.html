@@ -212,8 +212,11 @@
       align-items: stretch;
       background: var(--ivory);
     }
-    .split-media img {
+    .split-media img,
+    .split-media video {
       width: 100%; height: 100%; object-fit: cover; min-height: 440px;
+      display: block;
+      background: var(--dark);
     }
     .split-copy {
       padding: clamp(2rem, 5vw, 5rem);
@@ -352,9 +355,7 @@
       width: 100%; height: 100%; min-height: 330px;
       object-fit: cover;
       object-position: center;
-      filter: grayscale(72%) sepia(2%) saturate(12%) brightness(1.22) contrast(0.50);
-      opacity: 0.70;
-      border: 1px solid rgba(20, 20, 20, 0.04);
+      filter: grayscale(100%) sepia(10%) contrast(.92);
     }
     .founder-text {
       display: flex;
@@ -370,6 +371,36 @@
       margin-bottom: 1rem;
     }
     .founder-card p { font-size: 1rem; color: var(--ink-soft); line-height: 1.5; max-width: 350px; }
+    .bio-open {
+      align-self: flex-start;
+      margin-top: 1.2rem;
+      border: 1px solid var(--gold-dark);
+      background: transparent;
+      color: var(--gold-dark);
+      padding: .72rem 1rem;
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      font-size: .68rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .22s ease;
+    }
+    .bio-open:hover {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--ivory);
+    }
+    .founders-visual {
+      margin-top: 2rem;
+      border: 1px solid rgba(20,20,20,.10);
+      overflow: hidden;
+      background: var(--ivory-2);
+    }
+    .founders-visual img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
 
     .outlook-layout {
       display: grid;
@@ -378,7 +409,8 @@
       align-items: stretch;
     }
     .outlook-panel,
-    .outlook-video {
+    .outlook-video,
+    .outlook-side-image {
       position: relative;
       min-height: 470px;
       overflow: hidden;
@@ -403,7 +435,8 @@
     .outlook-copy { position: relative; z-index: 2; max-width: 440px; }
     .outlook-copy .eyebrow { color: var(--gold); }
     .outlook-copy h2 { font-size: clamp(2rem, 3.2vw, 3.8rem); line-height: 1.02; }
-    .outlook-video video {
+    .outlook-video video,
+    .outlook-side-image img {
       width: 100%; height: 100%; min-height: 470px;
       object-fit: cover;
       display: block;
@@ -500,6 +533,43 @@
       padding: 0;
     }
     .contact-link-button:hover { text-decoration: underline; }
+
+    .bio-modal-content {
+      padding: 2rem;
+      display: grid;
+      gap: 1.15rem;
+    }
+    .bio-role {
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      font-size: .76rem;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+    .bio-body {
+      display: grid;
+      gap: 1rem;
+      color: var(--ink-soft);
+      font-size: 1rem;
+      line-height: 1.62;
+    }
+    .bio-focus {
+      margin-top: .35rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+    .bio-focus h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+      font-size: 1.35rem;
+      margin-bottom: .65rem;
+    }
+    .bio-focus ul {
+      padding-left: 1.2rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
 
     .modal-overlay {
       position: fixed;
@@ -668,7 +738,8 @@
       .container, .hero-content, .footer-inner { width: min(100% - 30px, var(--max)); }
       .split, .why-inner, .selective { grid-template-columns: 1fr; }
       .split-copy { border-left: 0; padding: 2rem 0; }
-      .split-media img { min-height: 310px; }
+      .split-media img,
+      .split-media video { min-height: 310px; }
       .areas-grid { grid-template-columns: 1fr; }
       .area-card { display: grid; grid-template-columns: 140px 1fr; gap: 1rem; padding-left: 0; border-left: 0; border-top: 1px solid var(--line); padding-top: 1rem; }
       .area-card img { margin: 0; aspect-ratio: 1/1; }
@@ -676,584 +747,17 @@
       .founder-card { grid-template-columns: 1fr; min-height: 0; }
       .founder-card img { min-height: 420px; }
       .founder-text { padding: 1.5rem; }
-      .outlook-panel, .outlook-video { min-height: 380px; }
+      .outlook-panel, .outlook-video, .outlook-side-image { min-height: 380px; }
       .outlook-panel { padding: 2rem; }
-      .outlook-video video { min-height: 380px; }
+      .outlook-video video,
+      .outlook-side-image img { min-height: 380px; }
       .contact-inner { flex-direction: column; align-items: flex-start; }
       .form-grid { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr; text-align: left; }
       .footer-center { text-align: left; }
       .footer-links { justify-content: flex-start; }
     }
-
-
-    /* =========================================================
-       MOBILE OVERRIDE — added without changing desktop layout
-       Keeps the original image names, HTML structure and JS.
-       ========================================================= */
-
-    @media (max-width: 780px) {
-      html,
-      body {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-      }
-
-      html {
-        scroll-padding-top: 145px !important;
-      }
-
-      #top,
-      #who-we-are,
-      #strategic-areas,
-      #why-shefa,
-      #founders,
-      #outlook,
-      #selective,
-      #contact {
-        scroll-margin-top: 145px !important;
-      }
-
-      /* Header: always visible while scrolling on mobile */
-      .site-header {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: auto !important;
-        z-index: 9999 !important;
-        min-height: auto !important;
-        height: auto !important;
-        padding: 0 !important;
-        background: rgba(244, 238, 228, 0.97) !important;
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        border-bottom: 1px solid rgba(20, 20, 20, 0.10);
-      }
-
-      .header-inner {
-        width: calc(100% - 28px) !important;
-        margin: 0 auto !important;
-        padding: 0.7rem 0 0.62rem !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        justify-content: flex-start !important;
-        gap: 0.5rem !important;
-      }
-
-      .brand img {
-        width: 142px !important;
-        height: auto !important;
-      }
-
-      .nav-wrap {
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 0.45rem !important;
-      }
-
-      .nav {
-        width: 100% !important;
-        max-width: 100% !important;
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        align-items: center !important;
-        gap: 1rem !important;
-        overflow-x: auto !important;
-        overflow-y: hidden !important;
-        white-space: nowrap !important;
-        padding: 0 0 0.28rem !important;
-        font-size: 0.61rem !important;
-        line-height: 1.35 !important;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-
-      .nav::-webkit-scrollbar {
-        display: none;
-      }
-
-      .nav a {
-        flex: 0 0 auto !important;
-        white-space: nowrap !important;
-      }
-
-      .lang-switch {
-        transform: scale(0.9);
-        transform-origin: left center;
-      }
-
-      /* First section: compensate fixed mobile header */
-      .hero {
-        min-height: auto !important;
-        padding-top: 132px !important;
-        padding-bottom: 3.2rem !important;
-        align-items: center !important;
-      }
-
-      .hero-content {
-        width: calc(100% - 30px) !important;
-        padding: 3.1rem 0 2.8rem !important;
-      }
-
-      .hero-copy {
-        max-width: 100% !important;
-      }
-
-      .hero h1 {
-        font-size: clamp(2.35rem, 12vw, 3.8rem) !important;
-        line-height: 0.96 !important;
-        max-width: 100% !important;
-      }
-
-      .hero p {
-        max-width: 100% !important;
-        font-size: 0.98rem !important;
-      }
-
-      .button-row {
-        width: 100% !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-      }
-
-      .btn {
-        width: 100% !important;
-        text-align: center !important;
-      }
-
-      /* General mobile spacing */
-      .section {
-        padding: 3.4rem 0 !important;
-      }
-
-      .container,
-      .footer-inner {
-        width: calc(100% - 30px) !important;
-      }
-
-      .split,
-      .why-inner,
-      .selective {
-        grid-template-columns: 1fr !important;
-      }
-
-      .split-media img {
-        min-height: 300px !important;
-      }
-
-      .split-copy {
-        border-left: 0 !important;
-        padding: 2.4rem 1rem !important;
-      }
-
-      .split-copy h2,
-      .why h2,
-      .outlook-copy h2,
-      .contact-inner h2 {
-        font-size: clamp(2rem, 9vw, 3.1rem) !important;
-        line-height: 1.02 !important;
-      }
-
-      /* Strategic areas */
-      .areas-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1rem !important;
-      }
-
-      .area-card {
-        display: grid !important;
-        grid-template-columns: 118px 1fr !important;
-        gap: 1rem !important;
-        align-items: start !important;
-        padding-left: 0 !important;
-        padding-top: 1rem !important;
-        border-left: 0 !important;
-        border-top: 1px solid var(--line) !important;
-      }
-
-      .area-card img {
-        width: 118px !important;
-        height: 118px !important;
-        aspect-ratio: 1 / 1 !important;
-        object-fit: cover !important;
-        margin: 0 !important;
-      }
-
-      .area-card h3 {
-        font-size: 1.18rem !important;
-      }
-
-      /* Why SHEFA */
-      .why {
-        padding: 3.6rem 0 !important;
-      }
-
-      .why-grid,
-      .statements {
-        grid-template-columns: 1fr !important;
-      }
-
-      .why-item {
-        padding-left: 1rem !important;
-      }
-
-      /* Founders: no overlap between portrait and text */
-      .founders-stack {
-        gap: 2rem !important;
-      }
-
-      .founders-panel {
-        padding-bottom: 2rem !important;
-        overflow: visible !important;
-      }
-
-      .founder-cards {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 1.35rem !important;
-        align-items: stretch !important;
-      }
-
-      .founder-card {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 0 !important;
-        min-height: 0 !important;
-        height: auto !important;
-        overflow: visible !important;
-        background: rgba(255,255,255,.20) !important;
-      }
-
-      .founder-card img {
-        display: block !important;
-        position: relative !important;
-        z-index: 1 !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        max-height: none !important;
-        aspect-ratio: 1 / 1 !important;
-        object-fit: cover !important;
-        object-position: center !important;
-        margin: 0 !important;
-        flex: 0 0 auto !important;
-      }
-
-      .founder-text {
-        display: block !important;
-        position: relative !important;
-        z-index: 2 !important;
-        width: 100% !important;
-        padding: 1.35rem 1.25rem 1.5rem !important;
-        background: rgba(244, 238, 228, 0.92) !important;
-      }
-
-      .founder-card h3 {
-        font-size: 2rem !important;
-        line-height: 1.05 !important;
-        margin: 0 0 0.75rem !important;
-      }
-
-      .founder-card p {
-        max-width: none !important;
-        font-size: 0.96rem !important;
-        line-height: 1.55 !important;
-        margin: 0 !important;
-      }
-
-      /* Outlook/video */
-      .outlook-layout {
-        grid-template-columns: 1fr !important;
-        gap: 1rem !important;
-      }
-
-      .outlook-panel,
-      .outlook-video {
-        min-height: 330px !important;
-      }
-
-      .outlook-panel {
-        padding: 2rem !important;
-      }
-
-      .outlook-video video {
-        min-height: 330px !important;
-      }
-
-      .video-note {
-        font-size: 0.78rem !important;
-      }
-
-      /* Selective and contact */
-      .selective {
-        gap: 2rem !important;
-      }
-
-      .contact-inner {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 1.2rem !important;
-      }
-
-      .contact-strip {
-        padding: 2.4rem 0 !important;
-      }
-
-      /* Modal form */
-      .modal-overlay {
-        padding: 0.8rem !important;
-      }
-
-      .contact-modal {
-        width: min(100%, 96vw) !important;
-        max-height: calc(100vh - 1.6rem) !important;
-      }
-
-      .modal-header,
-      .contact-form {
-        padding: 1.35rem !important;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr !important;
-      }
-
-      .full {
-        grid-column: auto !important;
-      }
-
-      /* Footer */
-      .footer-inner {
-        grid-template-columns: 1fr !important;
-        text-align: left !important;
-        gap: 1rem !important;
-      }
-
-      .footer-center {
-        text-align: left !important;
-      }
-
-      .footer-links {
-        justify-content: flex-start !important;
-      }
-    }
-
-    @media (max-width: 520px) {
-      html {
-        scroll-padding-top: 138px !important;
-      }
-
-      #top,
-      #who-we-are,
-      #strategic-areas,
-      #why-shefa,
-      #founders,
-      #outlook,
-      #selective,
-      #contact {
-        scroll-margin-top: 138px !important;
-      }
-
-      .brand img {
-        width: 132px !important;
-      }
-
-      .nav {
-        font-size: 0.58rem !important;
-        gap: 0.85rem !important;
-      }
-
-      .hero {
-        padding-top: 126px !important;
-      }
-
-      .hero h1 {
-        font-size: clamp(2.15rem, 13vw, 3.25rem) !important;
-      }
-
-      .area-card {
-        grid-template-columns: 96px 1fr !important;
-      }
-
-      .area-card img {
-        width: 96px !important;
-        height: 96px !important;
-      }
-
-      .founder-card h3 {
-        font-size: 1.8rem !important;
-      }
-
-      .outlook-panel,
-      .outlook-video,
-      .outlook-video video {
-        min-height: 300px !important;
-      }
-    }
-
-  
-
-    /* =========================================================
-       MOBILE IMAGE FIT FIX — v2
-       - Shows Home and Outlook images complete on mobile.
-       - Forces Founder text below the image with solid background.
-       ========================================================= */
-
-    @media (max-width: 780px) {
-      /* HOME / HERO: keep the existing structure but stop cropping the image */
-      .hero {
-        min-height: 640px !important;
-        background: var(--ivory) !important;
-        overflow: hidden !important;
-      }
-
-      .hero-bg {
-        position: absolute !important;
-        inset: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: contain !important;
-        object-position: center center !important;
-        background: var(--ivory) !important;
-        filter: saturate(.9) contrast(.96) brightness(1.03) !important;
-      }
-
-      .hero::before {
-        background: linear-gradient(90deg,
-          rgba(244,238,228,.96) 0%,
-          rgba(244,238,228,.82) 43%,
-          rgba(244,238,228,.35) 100%) !important;
-      }
-
-      .hero-content {
-        position: relative !important;
-        z-index: 2 !important;
-      }
-
-      /* FOUNDERS: definitive mobile stack, no overlay and no text behind image */
-      .founder-cards {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 1.35rem !important;
-      }
-
-      .founder-card {
-        display: block !important;
-        position: relative !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        overflow: visible !important;
-        background: rgba(244, 238, 228, 0.98) !important;
-        border: 1px solid rgba(20,20,20,.08) !important;
-      }
-
-      .founder-card img {
-        display: block !important;
-        position: static !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        max-height: none !important;
-        aspect-ratio: auto !important;
-        object-fit: contain !important;
-        object-position: center center !important;
-        margin: 0 !important;
-        z-index: auto !important;
-        opacity: .74 !important;
-      }
-
-      .founder-text {
-        display: block !important;
-        position: static !important;
-        width: 100% !important;
-        min-height: 0 !important;
-        padding: 1.35rem 1.25rem 1.55rem !important;
-        margin: 0 !important;
-        background: rgba(244, 238, 228, 1) !important;
-        color: var(--ink) !important;
-        z-index: auto !important;
-      }
-
-      .founder-card h3 {
-        color: var(--ink) !important;
-        opacity: 1 !important;
-        font-size: 2rem !important;
-        line-height: 1.05 !important;
-        margin: 0 0 .85rem !important;
-      }
-
-      .founder-card p {
-        color: var(--ink-soft) !important;
-        opacity: 1 !important;
-        max-width: none !important;
-        font-size: .98rem !important;
-        line-height: 1.55 !important;
-        margin: 0 !important;
-      }
-
-      /* OUTLOOK: show the complete image instead of cropping it */
-      .outlook-panel {
-        display: block !important;
-        min-height: 0 !important;
-        height: auto !important;
-        padding: 0 !important;
-        background: var(--dark) !important;
-        overflow: hidden !important;
-      }
-
-      .outlook-panel::before {
-        display: none !important;
-      }
-
-      .outlook-panel img {
-        position: static !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        object-fit: contain !important;
-        object-position: center center !important;
-        opacity: .78 !important;
-      }
-
-      .outlook-copy {
-        position: static !important;
-        max-width: none !important;
-        padding: 1.6rem 1.45rem 1.8rem !important;
-        background: var(--dark) !important;
-        color: var(--ivory) !important;
-      }
-
-      .outlook-copy h2 {
-        font-size: clamp(2rem, 10vw, 3.25rem) !important;
-        line-height: 1.02 !important;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .hero {
-        min-height: 610px !important;
-      }
-
-      .hero-bg {
-        object-position: center center !important;
-      }
-
-      .founder-card h3 {
-        font-size: 1.85rem !important;
-      }
-
-      .outlook-copy {
-        padding: 1.4rem 1.25rem 1.6rem !important;
-      }
-    }
-</style>
+  </style>
 </head>
 
 <body>
@@ -1300,7 +804,9 @@
 
     <section id="who-we-are" class="split" aria-label="Who we are">
       <div class="split-media">
-        <img src="assets/who-we-are.webp" alt="Two healthcare professionals speaking in an institutional corridor" />
+        <video controls playsinline preload="metadata" poster="assets/who-we-are.webp" aria-label="SHEFA introductory video">
+          <source src="assets/outlook-video.mp4" type="video/mp4" />
+        </video>
       </div>
       <div class="split-copy">
         <div class="eyebrow" data-i18n="who.label">Who we are</div>
@@ -1404,6 +910,7 @@
               <div class="founder-text">
                 <h3>Rania El Ghauche</h3>
                 <p data-i18n="founders.rania">International healthcare diplomacy, institutional partnerships and Gulf ecosystem development.</p>
+                <button class="bio-open" type="button" data-open-bio="rania" data-i18n="founders.readCv">Read CV</button>
               </div>
             </article>
             <article class="founder-card">
@@ -1411,8 +918,12 @@
               <div class="founder-text">
                 <h3>Ana Garrido</h3>
                 <p data-i18n="founders.ana">Strategic structuring, innovation ecosystems and activation of complex international initiatives.</p>
+                <button class="bio-open" type="button" data-open-bio="ana" data-i18n="founders.readCv">Read CV</button>
               </div>
             </article>
+          </div>
+          <div class="founders-visual">
+            <img src="assets/cofounders2.png" alt="SHEFA strategic overview document for co-founders" />
           </div>
         </div>
 
@@ -1425,11 +936,8 @@
             </div>
           </div>
 
-          <div class="outlook-video" aria-label="SHEFA video">
-            <video controls playsinline preload="metadata" poster="assets/footer-visual.webp">
-              <source src="assets/outlook-video.mp4" type="video/mp4" />
-            </video>
-            <div class="video-note" data-i18n="outlook.videoNote">Video area. Upload the file as <strong>assets/outlook-video.mp4</strong> to display it here.</div>
+          <div class="outlook-side-image" aria-label="SHEFA institutional healthcare collaboration image">
+            <img src="assets/who-we-are.webp" alt="Two healthcare professionals speaking in an institutional corridor" />
           </div>
         </div>
       </div>
@@ -1471,6 +979,27 @@
   </main>
 
 
+
+  <div class="modal-overlay" id="bio-modal" role="dialog" aria-modal="true" aria-labelledby="bio-modal-title">
+    <div class="contact-modal">
+      <div class="modal-header">
+        <div>
+          <div class="eyebrow" id="bio-modal-label">Founder profile</div>
+          <h2 class="serif" id="bio-modal-title">Founder profile</h2>
+          <p class="bio-role" id="bio-modal-role"></p>
+        </div>
+        <button class="modal-close" type="button" data-close-bio aria-label="Close founder profile">×</button>
+      </div>
+      <div class="bio-modal-content">
+        <div class="bio-body" id="bio-modal-body"></div>
+        <div class="bio-focus">
+          <h3>Focus</h3>
+          <ul id="bio-modal-focus"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal-overlay" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
     <div class="contact-modal">
       <div class="modal-header">
@@ -1481,7 +1010,7 @@
         <button class="modal-close" type="button" data-close-contact aria-label="Close contact form">×</button>
       </div>
 
-      <form class="contact-form" id="contact-form" action=https://script.google.com/macros/s/AKfycbzCTkx8KerjZtrapimfiJlh52WZ9tphq1YOptySzbnKe8Cl7xQquLNojZcwUnJNLUqYNA/exec" method="POST" target="contact-submit-frame" accept-charset="UTF-8">
+      <form class="contact-form" id="contact-form" action="REPLACE_WITH_GOOGLE_APPS_SCRIPT_WEB_APP_URL" method="POST" target="contact-submit-frame" accept-charset="UTF-8">
         <input type="hidden" name="language" id="form-language" value="en" />
         <input type="hidden" name="source" value="SHEFA website" />
         <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
@@ -1579,6 +1108,9 @@
             "founders.label": "Founders",
             "founders.rania": "International healthcare diplomacy, institutional partnerships and Gulf ecosystem development.",
             "founders.ana": "Strategic structuring, innovation ecosystems and activation of complex international initiatives.",
+            "founders.readCv": "Read CV",
+            "bio.label": "Founder profile",
+            "bio.close": "Close",
             "outlook.label": "International outlook",
             "outlook.title": "Built in Barcelona.<br />Designed for international healthcare ecosystems.",
             "outlook.videoNote": "Video area. Upload the file as <strong>assets/outlook-video.mp4</strong> to display it here.",
@@ -1649,6 +1181,9 @@
             "founders.label": "Fundadoras",
             "founders.rania": "Diplomacia sanitaria internacional, alianzas institucionales y desarrollo de ecosistemas en el Golfo.",
             "founders.ana": "Estructuración estratégica, ecosistemas de innovación y activación de iniciativas internacionales complejas.",
+            "founders.readCv": "Ver CV",
+            "bio.label": "Perfil de fundadora",
+            "bio.close": "Cerrar",
             "outlook.label": "Proyección internacional",
             "outlook.title": "Nacida en Barcelona.<br />Diseñada para ecosistemas sanitarios internacionales.",
             "outlook.videoNote": "Área de vídeo. Sube el archivo como <strong>assets/outlook-video.mp4</strong> para mostrarlo aquí.",
@@ -1725,6 +1260,89 @@
       });
     });
 
+
+    const bioProfiles = {
+      rania: {
+        name: 'Rania El Ghauche',
+        role: 'Co-Founder & Director of International Partnerships',
+        paragraphs: [
+          'Rania El Ghauche holds academic training in Business Administration, Healthcare Management, Health Communication and International Protocol & Diplomacy, combining institutional, healthcare and international expertise within cross-cultural environments.',
+          'She has developed a professional trajectory focused on healthcare diplomacy, international development and institutional coordination between Europe and the Middle East, including direct experience within environments linked to the United Arab Emirates healthcare and diplomatic ecosystem.',
+          'Her background includes medical institutional coordination, strategic relationship development and international partnership activation across highly sensitive institutional settings.',
+          'She currently contributes to scientific and institutional internationalization initiatives connected to biomedical research, strategic alliances and international healthcare collaboration, with a particular focus on the Middle East region.',
+          'Her profile combines diplomacy, healthcare, international positioning and trusted relationship-building capabilities across global institutional environments.'
+        ],
+        focus: [
+          'Healthcare diplomacy',
+          'UAE & Middle East ecosystems',
+          'Institutional relations',
+          'International strategic partnerships'
+        ]
+      },
+      ana: {
+        name: 'Ana Garrido',
+        role: 'Co-Founder & Strategic Director',
+        paragraphs: [
+          'Ana Garrido brings more than fifteen years of experience in strategic leadership, innovation management and project structuring across scientific, institutional and high-complexity environments.',
+          'Her academic background combines business administration, communication, scientific communication and public management, complemented by executive training focused on strategy, leadership and institutional development.',
+          'Her professional trajectory includes the leadership of multidisciplinary teams, strategic planning, organizational transformation and the development of initiatives connected to biomedical research, innovation transfer and public-private collaboration.',
+          'She has participated in the activation of institutional growth strategies, competitive funding initiatives and international innovation environments linked to biomedical research and healthcare transformation.',
+          'She currently contributes to institutional strategic leadership within the biomedical research and innovation sector, supporting the operational, organizational and strategic development of high-impact initiatives.',
+          'Her profile combines systemic vision, executive capacity and the ability to translate complex opportunities into structured and sustainable international projects.'
+        ],
+        focus: [
+          'Strategic development',
+          'Biomedical innovation ecosystems',
+          'Institutional structuring',
+          'International project development'
+        ]
+      }
+    };
+
+    const bioModal = document.getElementById('bio-modal');
+    const bioTitle = document.getElementById('bio-modal-title');
+    const bioLabel = document.getElementById('bio-modal-label');
+    const bioRole = document.getElementById('bio-modal-role');
+    const bioBody = document.getElementById('bio-modal-body');
+    const bioFocus = document.getElementById('bio-modal-focus');
+
+    function openBioModal(profileKey) {
+      const profile = bioProfiles[profileKey];
+      if (!profile || !bioModal) return;
+
+      const lang = getCurrentLanguage();
+      const dictionary = translations[lang] || translations.en;
+
+      bioLabel.textContent = dictionary['bio.label'] || 'Founder profile';
+      bioTitle.textContent = profile.name;
+      bioRole.textContent = profile.role;
+      bioBody.innerHTML = profile.paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join('');
+      bioFocus.innerHTML = profile.focus.map((item) => `<li>${item}</li>`).join('');
+
+      bioModal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeBioModal() {
+      if (!bioModal) return;
+      bioModal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-open-bio]').forEach((button) => {
+      button.addEventListener('click', () => openBioModal(button.dataset.openBio));
+    });
+
+    document.querySelectorAll('[data-close-bio]').forEach((button) => {
+      button.addEventListener('click', closeBioModal);
+    });
+
+    if (bioModal) {
+      bioModal.addEventListener('click', (event) => {
+        if (event.target === bioModal) closeBioModal();
+      });
+    }
+
     const modal = document.getElementById('contact-modal');
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
@@ -1767,7 +1385,10 @@
     }
 
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') closeContactModal();
+      if (event.key === 'Escape') {
+        closeContactModal();
+        closeBioModal();
+      }
     });
 
     if (contactForm) {
