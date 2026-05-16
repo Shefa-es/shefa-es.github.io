@@ -830,7 +830,7 @@
           <a href="#founders" data-i18n="nav.founders">Founders</a>
           <a href="#outlook" data-i18n="nav.outlook">Outlook</a>
           <a href="#selective" data-i18n="nav.selective">Selective by design</a>
-          <a href="#contact" data-open-contact data-i18n="nav.contact">Contact</a>
+          <button class="nav-link-button" type="button" data-open-contact data-i18n="nav.contact">Contact</button>
         </nav>
 
         <div class="lang-switch" aria-label="Language selector">
@@ -1064,7 +1064,7 @@
         <button class="modal-close" type="button" data-close-contact aria-label="Close contact form">×</button>
       </div>
 
-      <form class="contact-form" id="contact-form" action="https://script.google.com/macros/s/AKfycbzCTkx8KerjZtrapimfiJlh52WZ9tphq1YOptySzbnKe8Cl7xQquLNojZcwUnJNLUqYNA/exec" method="POST" target="contact-submit-frame" accept-charset="UTF-8">
+      <form class="contact-form" id="contact-form" action="https://script.google.com/macros/s/AKfycbzCTkx8KerjZtrapimfiJlh52WZ9tphq1YOptySzbnKe8Cl7xQquLNojZcwUnJNLUqYNA/exec" method="POST" accept-charset="UTF-8">
         <input type="hidden" name="language" id="form-language" value="en" />
         <input type="hidden" name="source" value="SHEFA website" />
         <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
@@ -1098,7 +1098,6 @@
           <button class="modal-submit" type="submit" data-i18n="contact.submit">Send message</button>
           <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
         </div>
-        <iframe name="contact-submit-frame" id="contact-submit-frame" title="Contact form submission" hidden></iframe>
       </form>
     </div>
   </div>
@@ -1449,9 +1448,7 @@
     const modal = document.getElementById('contact-modal');
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
-    const submitFrame = document.getElementById('contact-submit-frame');
     const submitButton = contactForm ? contactForm.querySelector('.modal-submit') : null;
-    let waitingForSubmission = false;
 
     function translateStatus(key) {
       const lang = getCurrentLanguage();
@@ -1459,7 +1456,10 @@
     }
 
     function openContactModal(event) {
-      if (event) event.preventDefault();
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
       if (!modal) return;
       modal.classList.add('is-open');
       modal.setAttribute('aria-hidden', 'false');
@@ -1497,31 +1497,56 @@
       }
     });
 
+    function setFormBusy(isBusy) {
+      if (submitButton) submitButton.disabled = isBusy;
+      if (contactForm) contactForm.classList.toggle('is-submitting', isBusy);
+    }
+
     if (contactForm) {
-      contactForm.addEventListener('submit', (event) => {
+      contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
         const action = contactForm.getAttribute('action') || '';
         if (!action || action.includes('REPLACE_WITH_GOOGLE_APPS_SCRIPT_WEB_APP_URL')) {
-          event.preventDefault();
           if (formStatus) formStatus.textContent = translateStatus('contact.statusConfig');
           return;
         }
-        const languageInput = document.getElementById('form-language');
-        if (languageInput) languageInput.value = getCurrentLanguage();
-        waitingForSubmission = true;
-        if (formStatus) formStatus.textContent = translateStatus('contact.statusSending');
-        if (submitButton) submitButton.disabled = true;
-      });
-    }
 
-    if (submitFrame) {
-      submitFrame.addEventListener('load', () => {
-        if (!waitingForSubmission) return;
-        waitingForSubmission = false;
-        if (submitButton) submitButton.disabled = false;
-        if (formStatus) formStatus.textContent = translateStatus('contact.statusSuccess');
-        if (contactForm) contactForm.reset();
         const languageInput = document.getElementById('form-language');
         if (languageInput) languageInput.value = getCurrentLanguage();
+
+        const formData = new FormData(contactForm);
+        formData.set('language', getCurrentLanguage());
+        formData.set('privacyAccepted', formData.get('privacyConsent') ? 'Accepted' : '');
+        formData.set('source', 'SHEFA website');
+
+        const honeypot = String(formData.get('website') || '').trim();
+        if (honeypot) {
+          if (formStatus) formStatus.textContent = translateStatus('contact.statusSuccess');
+          contactForm.reset();
+          if (languageInput) languageInput.value = getCurrentLanguage();
+          return;
+        }
+
+        try {
+          setFormBusy(true);
+          if (formStatus) formStatus.textContent = translateStatus('contact.statusSending');
+
+          await fetch(action, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: new URLSearchParams(formData)
+          });
+
+          if (formStatus) formStatus.textContent = translateStatus('contact.statusSuccess');
+          contactForm.reset();
+          if (languageInput) languageInput.value = getCurrentLanguage();
+        } catch (error) {
+          console.error('SHEFA contact form error:', error);
+          if (formStatus) formStatus.textContent = translateStatus('contact.statusError');
+        } finally {
+          setFormBusy(false);
+        }
       });
     }
 
