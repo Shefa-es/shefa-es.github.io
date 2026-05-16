@@ -391,15 +391,19 @@
       color: var(--ivory);
     }
     .founders-visual {
-      margin-top: 2rem;
+      margin: 2.2rem auto 0;
+      max-width: 1120px;
       border: 1px solid rgba(20,20,20,.10);
       overflow: hidden;
       background: var(--ivory-2);
     }
     .founders-visual img {
       width: 100%;
+      height: clamp(260px, 31vw, 420px);
       display: block;
       object-fit: cover;
+      object-position: center;
+      filter: grayscale(100%) sepia(8%) contrast(.94) brightness(1.03);
     }
 
     .outlook-layout {
@@ -923,7 +927,7 @@
             </article>
           </div>
           <div class="founders-visual">
-            <img src="assets/Cofunders2.webp" alt="SHEFA strategic overview document for co-founders" />
+            <img src="assets/cofounders2.png" alt="SHEFA strategic overview document for co-founders" />
           </div>
         </div>
 
@@ -993,7 +997,7 @@
       <div class="bio-modal-content">
         <div class="bio-body" id="bio-modal-body"></div>
         <div class="bio-focus">
-          <h3>Focus</h3>
+          <h3 id="bio-focus-title">Focus</h3>
           <ul id="bio-modal-focus"></ul>
         </div>
       </div>
@@ -1010,7 +1014,7 @@
         <button class="modal-close" type="button" data-close-contact aria-label="Close contact form">×</button>
       </div>
 
-      <form class="contact-form" id="contact-form" action="https://script.google.com/macros/s/AKfycbzCTkx8KerjZtrapimfiJlh52WZ9tphq1YOptySzbnKe8Cl7xQquLNojZcwUnJNLUqYNA/exec" method="POST" target="contact-submit-frame" accept-charset="UTF-8">
+      <form class="contact-form" id="contact-form" action="REPLACE_WITH_GOOGLE_APPS_SCRIPT_WEB_APP_URL" method="POST" target="contact-submit-frame" accept-charset="UTF-8">
         <input type="hidden" name="language" id="form-language" value="en" />
         <input type="hidden" name="source" value="SHEFA website" />
         <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
@@ -1111,6 +1115,7 @@
             "founders.readCv": "Read CV",
             "bio.label": "Founder profile",
             "bio.close": "Close",
+            "bio.focus": "Focus",
             "outlook.label": "International outlook",
             "outlook.title": "Built in Barcelona.<br />Designed for international healthcare ecosystems.",
             "outlook.videoNote": "Video area. Upload the file as <strong>assets/outlook-video.mp4</strong> to display it here.",
@@ -1184,6 +1189,7 @@
             "founders.readCv": "Ver CV",
             "bio.label": "Perfil de fundadora",
             "bio.close": "Cerrar",
+            "bio.focus": "Foco",
             "outlook.label": "Proyección internacional",
             "outlook.title": "Nacida en Barcelona.<br />Diseñada para ecosistemas sanitarios internacionales.",
             "outlook.videoNote": "Área de vídeo. Sube el archivo como <strong>assets/outlook-video.mp4</strong> para mostrarlo aquí.",
@@ -1219,6 +1225,8 @@
       return localStorage.getItem('shefaLanguage') || 'en';
     }
 
+    let currentBioProfileKey = null;
+
     function setLanguage(lang) {
       const dictionary = translations[lang] || translations.en;
       document.documentElement.lang = lang;
@@ -1232,6 +1240,9 @@
       const languageInput = document.getElementById('form-language');
       if (languageInput) languageInput.value = lang;
       localStorage.setItem('shefaLanguage', lang);
+      if (currentBioProfileKey && bioModal && bioModal.classList.contains('is-open')) {
+        openBioModal(currentBioProfileKey);
+      }
     }
 
     document.querySelectorAll('.lang-switch button').forEach((button) => {
@@ -1264,38 +1275,75 @@
     const bioProfiles = {
       rania: {
         name: 'Rania El Ghauche',
-        role: 'Co-Founder & Director of International Partnerships',
-        paragraphs: [
-          'Rania El Ghauche holds academic training in Business Administration, Healthcare Management, Health Communication and International Protocol & Diplomacy, combining institutional, healthcare and international expertise within cross-cultural environments.',
-          'She has developed a professional trajectory focused on healthcare diplomacy, international development and institutional coordination between Europe and the Middle East, including direct experience within environments linked to the United Arab Emirates healthcare and diplomatic ecosystem.',
-          'Her background includes medical institutional coordination, strategic relationship development and international partnership activation across highly sensitive institutional settings.',
-          'She currently contributes to scientific and institutional internationalization initiatives connected to biomedical research, strategic alliances and international healthcare collaboration, with a particular focus on the Middle East region.',
-          'Her profile combines diplomacy, healthcare, international positioning and trusted relationship-building capabilities across global institutional environments.'
-        ],
-        focus: [
-          'Healthcare diplomacy',
-          'UAE & Middle East ecosystems',
-          'Institutional relations',
-          'International strategic partnerships'
-        ]
+        en: {
+          role: 'Co-Founder & Director of International Partnerships',
+          paragraphs: [
+            'Rania El Ghauche holds academic training in Business Administration, Healthcare Management, Health Communication and International Protocol & Diplomacy, combining institutional, healthcare and international expertise within cross-cultural environments.',
+            'She has developed a professional trajectory focused on healthcare diplomacy, international development and institutional coordination between Europe and the Middle East, including direct experience within environments linked to the United Arab Emirates healthcare and diplomatic ecosystem.',
+            'Her background includes medical institutional coordination, strategic relationship development and international partnership activation across highly sensitive institutional settings.',
+            'She currently contributes to scientific and institutional internationalization initiatives connected to biomedical research, strategic alliances and international healthcare collaboration, with a particular focus on the Middle East region.',
+            'Her profile combines diplomacy, healthcare, international positioning and trusted relationship-building capabilities across global institutional environments.'
+          ],
+          focus: [
+            'Healthcare diplomacy',
+            'UAE & Middle East ecosystems',
+            'Institutional relations',
+            'International strategic partnerships'
+          ]
+        },
+        es: {
+          role: 'Cofundadora y Directora de Alianzas Internacionales',
+          paragraphs: [
+            'Rania El Ghauche cuenta con formación académica en Administración de Empresas, Gestión Sanitaria, Comunicación en Salud y Protocolo y Diplomacia Internacional, combinando experiencia institucional, sanitaria e internacional en entornos interculturales.',
+            'Ha desarrollado una trayectoria profesional centrada en la diplomacia sanitaria, el desarrollo internacional y la coordinación institucional entre Europa y Oriente Medio, incluyendo experiencia directa en entornos vinculados al ecosistema sanitario y diplomático de los Emiratos Árabes Unidos.',
+            'Su experiencia incluye coordinación institucional médica, desarrollo de relaciones estratégicas y activación de alianzas internacionales en contextos institucionales altamente sensibles.',
+            'Actualmente contribuye a iniciativas de internacionalización científica e institucional conectadas con la investigación biomédica, las alianzas estratégicas y la colaboración sanitaria internacional, con especial foco en la región de Oriente Medio.',
+            'Su perfil combina diplomacia, salud, posicionamiento internacional y capacidad para construir relaciones de confianza en entornos institucionales globales.'
+          ],
+          focus: [
+            'Diplomacia sanitaria',
+            'Ecosistemas de EAU y Oriente Medio',
+            'Relaciones institucionales',
+            'Alianzas estratégicas internacionales'
+          ]
+        }
       },
       ana: {
         name: 'Ana Garrido',
-        role: 'Co-Founder & Strategic Director',
-        paragraphs: [
-          'Ana Garrido brings more than fifteen years of experience in strategic leadership, innovation management and project structuring across scientific, institutional and high-complexity environments.',
-          'Her academic background combines business administration, communication, scientific communication and public management, complemented by executive training focused on strategy, leadership and institutional development.',
-          'Her professional trajectory includes the leadership of multidisciplinary teams, strategic planning, organizational transformation and the development of initiatives connected to biomedical research, innovation transfer and public-private collaboration.',
-          'She has participated in the activation of institutional growth strategies, competitive funding initiatives and international innovation environments linked to biomedical research and healthcare transformation.',
-          'She currently contributes to institutional strategic leadership within the biomedical research and innovation sector, supporting the operational, organizational and strategic development of high-impact initiatives.',
-          'Her profile combines systemic vision, executive capacity and the ability to translate complex opportunities into structured and sustainable international projects.'
-        ],
-        focus: [
-          'Strategic development',
-          'Biomedical innovation ecosystems',
-          'Institutional structuring',
-          'International project development'
-        ]
+        en: {
+          role: 'Co-Founder & Strategic Director',
+          paragraphs: [
+            'Ana Garrido brings more than fifteen years of experience in strategic leadership, innovation management and project structuring across scientific, institutional and high-complexity environments.',
+            'Her academic background combines business administration, communication, scientific communication and public management, complemented by executive training focused on strategy, leadership and institutional development.',
+            'Her professional trajectory includes the leadership of multidisciplinary teams, strategic planning, organizational transformation and the development of initiatives connected to biomedical research, innovation transfer and public-private collaboration.',
+            'She has participated in the activation of institutional growth strategies, competitive funding initiatives and international innovation environments linked to biomedical research and healthcare transformation.',
+            'She currently contributes to institutional strategic leadership within the biomedical research and innovation sector, supporting the operational, organizational and strategic development of high-impact initiatives.',
+            'Her profile combines systemic vision, executive capacity and the ability to translate complex opportunities into structured and sustainable international projects.'
+          ],
+          focus: [
+            'Strategic development',
+            'Biomedical innovation ecosystems',
+            'Institutional structuring',
+            'International project development'
+          ]
+        },
+        es: {
+          role: 'Cofundadora y Directora Estratégica',
+          paragraphs: [
+            'Ana Garrido aporta más de quince años de experiencia en liderazgo estratégico, gestión de la innovación y estructuración de proyectos en entornos científicos, institucionales y de alta complejidad.',
+            'Su formación académica combina administración de empresas, comunicación, comunicación científica y gestión pública, complementada con formación ejecutiva orientada a estrategia, liderazgo y desarrollo institucional.',
+            'Su trayectoria profesional incluye la dirección de equipos multidisciplinares, planificación estratégica, transformación organizativa y desarrollo de iniciativas vinculadas a la investigación biomédica, la transferencia de innovación y la colaboración público-privada.',
+            'Ha participado en la activación de estrategias de crecimiento institucional, iniciativas de financiación competitiva y entornos internacionales de innovación ligados a la investigación biomédica y la transformación sanitaria.',
+            'Actualmente contribuye al liderazgo estratégico institucional dentro del sector de la investigación biomédica y la innovación, apoyando el desarrollo operativo, organizativo y estratégico de iniciativas de alto impacto.',
+            'Su perfil combina visión sistémica, capacidad ejecutiva y habilidad para traducir oportunidades complejas en proyectos internacionales estructurados y sostenibles.'
+          ],
+          focus: [
+            'Desarrollo estratégico',
+            'Ecosistemas de innovación biomédica',
+            'Estructuración institucional',
+            'Desarrollo de proyectos internacionales'
+          ]
+        }
       }
     };
 
@@ -1305,20 +1353,24 @@
     const bioRole = document.getElementById('bio-modal-role');
     const bioBody = document.getElementById('bio-modal-body');
     const bioFocus = document.getElementById('bio-modal-focus');
+    const bioFocusTitle = document.getElementById('bio-focus-title');
 
     function openBioModal(profileKey) {
-      const profile = bioProfiles[profileKey];
-      if (!profile || !bioModal) return;
+      const profileSet = bioProfiles[profileKey];
+      if (!profileSet || !bioModal) return;
 
       const lang = getCurrentLanguage();
       const dictionary = translations[lang] || translations.en;
+      const profile = profileSet[lang] || profileSet.en;
 
       bioLabel.textContent = dictionary['bio.label'] || 'Founder profile';
-      bioTitle.textContent = profile.name;
+      bioTitle.textContent = profileSet.name;
       bioRole.textContent = profile.role;
+      if (bioFocusTitle) bioFocusTitle.textContent = dictionary['bio.focus'] || 'Focus';
       bioBody.innerHTML = profile.paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join('');
       bioFocus.innerHTML = profile.focus.map((item) => `<li>${item}</li>`).join('');
 
+      currentBioProfileKey = profileKey;
       bioModal.classList.add('is-open');
       document.body.style.overflow = 'hidden';
     }
@@ -1326,6 +1378,7 @@
     function closeBioModal() {
       if (!bioModal) return;
       bioModal.classList.remove('is-open');
+      currentBioProfileKey = null;
       document.body.style.overflow = '';
     }
 
