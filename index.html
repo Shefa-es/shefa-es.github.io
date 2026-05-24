@@ -40,6 +40,7 @@
     #top,
     #who-we-are,
     #strategic-areas,
+    #platforms,
     #why-shefa,
     #founders,
     #outlook,
@@ -91,8 +92,8 @@
     .nav {
       display: flex;
       align-items: center;
-      gap: 1.7rem;
-      font-size: .73rem;
+      gap: 1.05rem;
+      font-size: .68rem;
       letter-spacing: .11em;
       text-transform: uppercase;
       font-weight: 700;
@@ -285,6 +286,86 @@
       color: var(--ink-soft);
       font-size: .89rem;
       line-height: 1.45;
+    }
+
+    .platforms-section {
+      background: var(--ivory-2);
+    }
+    .platforms-hero {
+      position: relative;
+      min-height: 390px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      color: var(--ivory);
+      background: var(--dark);
+      margin-bottom: 2rem;
+      border: 1px solid rgba(20,20,20,.12);
+    }
+    .platforms-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(0deg, rgba(0,0,0,.72), rgba(0,0,0,.08) 68%);
+    }
+    .platforms-hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(.92) contrast(.98);
+    }
+    .platforms-hero-copy {
+      position: relative;
+      z-index: 2;
+      padding: clamp(2rem, 4vw, 3.4rem);
+      max-width: 820px;
+    }
+    .platforms-hero-copy .eyebrow {
+      color: var(--gold);
+    }
+    .platforms-hero-copy h2 {
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 1.02;
+    }
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+    .platform-card {
+      background: rgba(255,255,255,.26);
+      border: 1px solid rgba(20,20,20,.10);
+      display: grid;
+      grid-template-rows: auto 1fr;
+      min-height: 100%;
+    }
+    .platform-card img {
+      width: 100%;
+      aspect-ratio: 1.42 / 1;
+      object-fit: cover;
+      filter: saturate(.88) contrast(.96);
+    }
+    .platform-copy {
+      padding: 1.45rem;
+    }
+    .platform-copy .area-number {
+      margin-bottom: .65rem;
+    }
+    .platform-copy h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(1.35rem, 2vw, 1.85rem);
+      font-weight: 400;
+      line-height: 1.05;
+      margin-bottom: .9rem;
+    }
+    .platform-copy p {
+      color: var(--ink-soft);
+      font-size: .94rem;
+      line-height: 1.5;
     }
 
     .why {
@@ -729,6 +810,7 @@
       .nav { gap: .9rem; font-size: .66rem; }
       .nav-wrap { gap: .75rem; }
       .areas-grid { grid-template-columns: repeat(3, 1fr); }
+      .platforms-grid { grid-template-columns: 1fr; }
       .why-grid { grid-template-columns: repeat(2, 1fr); }
       .founder-cards { grid-template-columns: 1fr; }
       .outlook-layout { grid-template-columns: 1fr; }
@@ -739,6 +821,7 @@
       #top,
       #who-we-are,
       #strategic-areas,
+      #platforms,
       #why-shefa,
       #founders,
       #outlook,
@@ -781,6 +864,10 @@
       .areas-grid { grid-template-columns: 1fr; }
       .area-card { display: grid; grid-template-columns: 140px 1fr; gap: 1rem; padding-left: 0; border-left: 0; border-top: 1px solid var(--line); padding-top: 1rem; }
       .area-card img { margin: 0; aspect-ratio: 1/1; }
+      .platforms-hero { min-height: 320px; margin-bottom: 1.3rem; }
+      .platforms-hero-copy { padding: 1.5rem; }
+      .platforms-grid { grid-template-columns: 1fr; }
+      .platform-card img { aspect-ratio: 1.35 / 1; }
       .why-grid, .statements { grid-template-columns: 1fr; }
       .founder-card {
         grid-template-columns: 1fr;
@@ -826,6 +913,7 @@
           <a href="#top" data-i18n="nav.home">Home</a>
           <a href="#who-we-are" data-i18n="nav.who">Who we are</a>
           <a href="#strategic-areas" data-i18n="nav.areas">Strategic areas</a>
+          <a href="#platforms" data-i18n="nav.platforms">Platforms</a>
           <a href="#why-shefa" data-i18n="nav.why">Why SHEFA</a>
           <a href="#founders" data-i18n="nav.founders">Founders</a>
           <a href="#outlook" data-i18n="nav.outlook">Outlook</a>
@@ -858,7 +946,7 @@
 
     <section id="who-we-are" class="split" aria-label="Who we are">
       <div class="split-media">
-        <video controls playsinline preload="metadata" poster="assets/img-video.png" aria-label="SHEFA introductory video">
+        <video controls playsinline preload="metadata" poster="assets/who-we-are.webp" aria-label="SHEFA introductory video">
           <source src="assets/outlook-video.mp4" type="video/mp4" />
         </video>
       </div>
@@ -883,23 +971,23 @@
             <div>
               <div class="area-number">01</div>
               <h3 data-i18n="areas.1.title">Biomedical Innovation</h3>
-              <p data-i18n="areas.1.text">Strategic positioning and validation of biomedical technologies with international potential.</p>
+              <p data-i18n="areas.1.text">Strategic positioning, validation and international projection of biomedical, regenerative and translational innovation with institutional implementation potential.</p>
             </div>
           </article>
           <article class="area-card">
-            <img src="assets/area-diplomacy.webp" alt="Abstract institutional lattice structure" />
+            <img src="assets/area-healthcare-diplomacy.webp" alt="Healthcare diplomacy institutional environment" />
             <div>
               <div class="area-number">02</div>
-              <h3 data-i18n="areas.2.title">Scientific Diplomacy</h3>
-              <p data-i18n="areas.2.text">Connecting institutions, healthcare ecosystems and international strategic stakeholders.</p>
+              <h3 data-i18n="areas.2.title">Healthcare Diplomacy</h3>
+              <p data-i18n="areas.2.text">Connecting institutions, healthcare ecosystems and strategic stakeholders across Europe, Gulf and Middle East environments.</p>
             </div>
           </article>
           <article class="area-card">
             <img src="assets/area-partnerships.webp" alt="International institutional meeting environment" />
             <div>
               <div class="area-number">03</div>
-              <h3 data-i18n="areas.3.title">International Healthcare Partnerships</h3>
-              <p data-i18n="areas.3.text">Facilitating high-value collaborations across hospitals, research centres and innovation ecosystems.</p>
+              <h3 data-i18n="areas.3.title">International Strategic Alliances</h3>
+              <p data-i18n="areas.3.text">Structuring high-value collaborations across research, healthcare, innovation and institutional ecosystems.</p>
             </div>
           </article>
           <article class="area-card">
@@ -907,15 +995,54 @@
             <div>
               <div class="area-number">04</div>
               <h3 data-i18n="areas.4.title">Gulf &amp; International Market Access</h3>
-              <p data-i18n="areas.4.text">Institutional access to Gulf healthcare environments and international healthcare ecosystems.</p>
+              <p data-i18n="areas.4.text">Facilitating strategic access to Gulf and international healthcare ecosystems through trusted institutional networks.</p>
             </div>
           </article>
           <article class="area-card">
             <img src="assets/area-clinical-pilots.webp" alt="Advanced clinical operating room with innovation technology" />
             <div>
               <div class="area-number">05</div>
-              <h3 data-i18n="areas.5.title">Clinical Pilots &amp; Innovation Activation</h3>
-              <p data-i18n="areas.5.text">Translating innovation into strategic pilots, institutional partnerships and implementation pathways.</p>
+              <h3 data-i18n="areas.5.title">Clinical Implementation &amp; Innovation Activation</h3>
+              <p data-i18n="areas.5.text">Enabling the transition from biomedical innovation to real-world clinical implementation through strategic pilots, institutional validation and healthcare deployment pathways.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="platforms" class="section platforms-section" aria-label="Institutional healthcare capability platforms">
+      <div class="container">
+        <div class="platforms-hero">
+          <img src="assets/platforms-hero.webp" alt="Institutional healthcare capability platform environment" />
+          <div class="platforms-hero-copy">
+            <div class="eyebrow" data-i18n="platforms.label">Institutional Healthcare Capability Platforms</div>
+            <h2 class="serif" data-i18n="platforms.title">Institutional Healthcare Capability Platforms</h2>
+          </div>
+        </div>
+
+        <div class="platforms-grid">
+          <article class="platform-card">
+            <img src="assets/platform-surgical-intelligence.webp" alt="Surgical intelligence infrastructure and clinical orchestration" />
+            <div class="platform-copy">
+              <div class="area-number">01</div>
+              <h3 data-i18n="platforms.1.title">Surgical Intelligence Infrastructure</h3>
+              <p data-i18n="platforms.1.text">Transforming perioperative environments into connected institutional intelligence systems through procedural synchronization, operational visibility and real-time clinical orchestration.</p>
+            </div>
+          </article>
+          <article class="platform-card">
+            <img src="assets/platform-surgical-simulation.webp" alt="Advanced surgical simulation and immersive procedural preparation" />
+            <div class="platform-copy">
+              <div class="area-number">02</div>
+              <h3 data-i18n="platforms.2.title">Advanced Surgical Simulation &amp; Procedural Preparation Infrastructure</h3>
+              <p data-i18n="platforms.2.text">Developing institutional ecosystems for hyper-realistic surgical simulation focused on the advanced modelling of complex clinical processes, procedural preparation and the generation of immersive surgical experience.</p>
+            </div>
+          </article>
+          <article class="platform-card">
+            <img src="assets/platform-regenerative-longevity.webp" alt="Regenerative and longevity medicine platform environment" />
+            <div class="platform-copy">
+              <div class="area-number">03</div>
+              <h3 data-i18n="platforms.3.title">Regenerative &amp; Longevity Medicine Platforms</h3>
+              <p data-i18n="platforms.3.text">Connecting regenerative biology, translational medicine and longevity-focused biomedical innovation into future healthcare ecosystems across Gulf and international institutional environments.</p>
             </div>
           </article>
         </div>
@@ -1064,7 +1191,7 @@
         <button class="modal-close" type="button" data-close-contact aria-label="Close contact form">×</button>
       </div>
 
-      <form class="contact-form" id="contact-form" action="https://script.google.com/macros/s/AKfycbz1ZSFlJGu-5wrC4eKpgaJibARu7k1mQNHMOdfbJGUhD2kk5_lWYj3VSRXLbGg3bOEt9A/exec" method="POST" target="contact-submit-frame" accept-charset="UTF-8">
+      <form class="contact-form" id="contact-form" action="https://script.google.com/macros/s/AKfycbzCTkx8KerjZtrapimfiJlh52WZ9tphq1YOptySzbnKe8Cl7xQquLNojZcwUnJNLUqYNA/exec" method="POST" target="contact-submit-frame" accept-charset="UTF-8">
         <input type="hidden" name="language" id="form-language" value="en" />
         <input type="hidden" name="source" value="SHEFA website" />
         <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
@@ -1125,6 +1252,7 @@
             "nav.home": "Home",
             "nav.who": "Who we are",
             "nav.areas": "Strategic areas",
+            "nav.platforms": "Platforms",
             "nav.why": "Why SHEFA",
             "nav.founders": "Founders",
             "nav.outlook": "Outlook",
@@ -1140,15 +1268,23 @@
             "who.p2": "Built through European expertise and Gulf institutional connectivity, SHEFA creates pathways between innovation, implementation and long-term institutional impact.",
             "areas.label": "Strategic areas",
             "areas.1.title": "Biomedical Innovation",
-            "areas.1.text": "Strategic positioning and validation of biomedical technologies with international potential.",
-            "areas.2.title": "Scientific Diplomacy",
-            "areas.2.text": "Connecting institutions, healthcare ecosystems and international strategic stakeholders.",
-            "areas.3.title": "International Healthcare Partnerships",
-            "areas.3.text": "Facilitating high-value collaborations across hospitals, research centres and innovation ecosystems.",
+            "areas.1.text": "Strategic positioning, validation and international projection of biomedical, regenerative and translational innovation with institutional implementation potential.",
+            "areas.2.title": "Healthcare Diplomacy",
+            "areas.2.text": "Connecting institutions, healthcare ecosystems and strategic stakeholders across Europe, Gulf and Middle East environments.",
+            "areas.3.title": "International Strategic Alliances",
+            "areas.3.text": "Structuring high-value collaborations across research, healthcare, innovation and institutional ecosystems.",
             "areas.4.title": "Gulf & International Market Access",
-            "areas.4.text": "Institutional access to Gulf healthcare environments and international healthcare ecosystems.",
-            "areas.5.title": "Clinical Pilots & Innovation Activation",
-            "areas.5.text": "Translating innovation into strategic pilots, institutional partnerships and implementation pathways.",
+            "areas.4.text": "Facilitating strategic access to Gulf and international healthcare ecosystems through trusted institutional networks.",
+            "areas.5.title": "Clinical Implementation & Innovation Activation",
+            "areas.5.text": "Enabling the transition from biomedical innovation to real-world clinical implementation through strategic pilots, institutional validation and healthcare deployment pathways.",
+            "platforms.label": "Institutional Healthcare Capability Platforms",
+            "platforms.title": "Institutional Healthcare Capability Platforms",
+            "platforms.1.title": "Surgical Intelligence Infrastructure",
+            "platforms.1.text": "Transforming perioperative environments into connected institutional intelligence systems through procedural synchronization, operational visibility and real-time clinical orchestration.",
+            "platforms.2.title": "Advanced Surgical Simulation & Procedural Preparation Infrastructure",
+            "platforms.2.text": "Developing institutional ecosystems for hyper-realistic surgical simulation focused on the advanced modelling of complex clinical processes, procedural preparation and the generation of immersive surgical experience.",
+            "platforms.3.title": "Regenerative & Longevity Medicine Platforms",
+            "platforms.3.text": "Connecting regenerative biology, translational medicine and longevity-focused biomedical innovation into future healthcare ecosystems across Gulf and international institutional environments.",
             "why.label": "Why SHEFA",
             "why.title": "A rare combination of institutional access, strategic intelligence and international execution.",
             "why.1.title": "Institutional Access",
@@ -1199,6 +1335,7 @@
             "nav.home": "Inicio",
             "nav.who": "Quiénes somos",
             "nav.areas": "Áreas estratégicas",
+            "nav.platforms": "Plataformas",
             "nav.why": "Por qué SHEFA",
             "nav.founders": "Fundadoras",
             "nav.outlook": "Proyección",
@@ -1214,15 +1351,23 @@
             "who.p2": "Construida desde la experiencia europea y la conectividad institucional con el Golfo, SHEFA crea vías entre innovación, implementación e impacto institucional a largo plazo.",
             "areas.label": "Áreas estratégicas",
             "areas.1.title": "Innovación biomédica",
-            "areas.1.text": "Posicionamiento estratégico y validación de tecnologías biomédicas con potencial internacional.",
-            "areas.2.title": "Diplomacia científica",
-            "areas.2.text": "Conexión entre instituciones, ecosistemas sanitarios y actores estratégicos internacionales.",
-            "areas.3.title": "Alianzas sanitarias internacionales",
-            "areas.3.text": "Impulso de colaboraciones de alto valor entre hospitales, centros de investigación y ecosistemas de innovación.",
+            "areas.1.text": "Posicionamiento estratégico, validación y proyección internacional de innovación biomédica, regenerativa y traslacional con potencial de implementación institucional.",
+            "areas.2.title": "Diplomacia sanitaria",
+            "areas.2.text": "Conexión entre instituciones, ecosistemas sanitarios y actores estratégicos en entornos de Europa, el Golfo y Oriente Medio.",
+            "areas.3.title": "Alianzas estratégicas internacionales",
+            "areas.3.text": "Estructuración de colaboraciones de alto valor entre ecosistemas de investigación, salud, innovación e instituciones.",
             "areas.4.title": "Acceso al Golfo y a mercados internacionales",
-            "areas.4.text": "Acceso institucional a entornos sanitarios del Golfo y a ecosistemas sanitarios internacionales.",
-            "areas.5.title": "Pilotos clínicos y activación de innovación",
-            "areas.5.text": "Traslación de la innovación hacia pilotos estratégicos, alianzas institucionales y vías de implementación.",
+            "areas.4.text": "Facilitación del acceso estratégico a ecosistemas sanitarios del Golfo e internacionales mediante redes institucionales de confianza.",
+            "areas.5.title": "Implementación clínica y activación de innovación",
+            "areas.5.text": "Impulso de la transición desde la innovación biomédica hacia la implementación clínica real mediante pilotos estratégicos, validación institucional y vías de despliegue sanitario.",
+            "platforms.label": "Plataformas institucionales de capacidad sanitaria",
+            "platforms.title": "Plataformas institucionales de capacidad sanitaria",
+            "platforms.1.title": "Infraestructura de inteligencia quirúrgica",
+            "platforms.1.text": "Transformación de entornos perioperatorios en sistemas institucionales de inteligencia conectada mediante sincronización procedimental, visibilidad operativa y orquestación clínica en tiempo real.",
+            "platforms.2.title": "Infraestructura avanzada de simulación quirúrgica y preparación procedimental",
+            "platforms.2.text": "Desarrollo de ecosistemas institucionales para simulación quirúrgica hiperrealista centrada en el modelado avanzado de procesos clínicos complejos, la preparación procedimental y la generación de experiencia quirúrgica inmersiva.",
+            "platforms.3.title": "Plataformas de medicina regenerativa y longevidad",
+            "platforms.3.text": "Conexión de biología regenerativa, medicina traslacional e innovación biomédica orientada a la longevidad en futuros ecosistemas sanitarios en entornos institucionales del Golfo e internacionales.",
             "why.label": "Por qué SHEFA",
             "why.title": "Una combinación poco habitual de acceso institucional, inteligencia estratégica y ejecución internacional.",
             "why.1.title": "Acceso institucional",
