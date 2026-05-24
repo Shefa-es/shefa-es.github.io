@@ -293,39 +293,57 @@
     }
     .platforms-hero {
       position: relative;
-      display: grid;
-      grid-template-columns: 32% 68%;
-      grid-template-areas: "copy media";
       aspect-ratio: 1653 / 951;
       min-height: 0;
       max-width: 980px;
       overflow: hidden;
+      display: block;
       color: var(--ink);
       background: var(--ivory);
       margin: 0 auto 2rem;
       border: 1px solid rgba(20,20,20,.12);
     }
-    .platforms-hero::before {
-      display: none;
-    }
     .platforms-hero img {
-      grid-area: media;
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: left center;
-      filter: saturate(.92) contrast(.98);
+      object-position: center center;
+      filter: saturate(.94) contrast(.98);
+      z-index: 0;
+    }
+    .platforms-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 29%;
+      z-index: 1;
+      background: var(--ivory);
+      pointer-events: none;
+    }
+    .platforms-hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 25%;
+      width: 18%;
+      z-index: 1;
+      background: linear-gradient(90deg, rgba(244,238,228,1) 0%, rgba(244,238,228,.86) 36%, rgba(244,238,228,.42) 70%, rgba(244,238,228,0) 100%);
+      pointer-events: none;
     }
     .platforms-hero-copy {
-      grid-area: copy;
       position: relative;
       z-index: 2;
+      width: 31%;
+      height: 100%;
+      padding: clamp(2rem, 4.2vw, 3.25rem);
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: clamp(1.8rem, 3.7vw, 3rem);
-      background: var(--ivory);
-      max-width: none;
     }
     .platforms-hero-copy h2 {
       font-size: clamp(2rem, 3vw, 3.15rem);
@@ -334,9 +352,9 @@
     }
     .platforms-hero-copy p {
       color: var(--ink-soft);
-      font-size: .94rem;
+      font-size: .98rem;
       line-height: 1.65;
-      max-width: 310px;
+      max-width: 340px;
     }
     .platforms-grid {
       display: grid;
@@ -871,24 +889,11 @@
       .areas-grid { grid-template-columns: 1fr; }
       .area-card { display: grid; grid-template-columns: 140px 1fr; gap: 1rem; padding-left: 0; border-left: 0; border-top: 1px solid var(--line); padding-top: 1rem; }
       .area-card img { margin: 0; aspect-ratio: 1/1; }
-      .platforms-hero {
-        aspect-ratio: auto;
-        min-height: 0;
-        max-width: 100%;
-        margin-bottom: 1.3rem;
-        grid-template-columns: 1fr;
-        grid-template-areas:
-          "copy"
-          "media";
-      }
-      .platforms-hero::before { display: none; }
-      .platforms-hero img {
-        height: auto;
-        aspect-ratio: 1653 / 951;
-        object-fit: cover;
-        object-position: left center;
-      }
-      .platforms-hero-copy { padding: 1.7rem; max-width: 100%; }
+      .platforms-hero { aspect-ratio: auto; min-height: 520px; max-width: 100%; margin-bottom: 1.3rem; }
+      .platforms-hero::before { top: 0; left: 0; right: 0; bottom: auto; width: 100%; height: 46%; background: var(--ivory); }
+      .platforms-hero::after { top: 38%; left: 0; right: 0; bottom: auto; width: 100%; height: 28%; background: linear-gradient(180deg, rgba(244,238,228,1) 0%, rgba(244,238,228,.82) 42%, rgba(244,238,228,.28) 76%, rgba(244,238,228,0) 100%); }
+      .platforms-hero img { object-position: center bottom; }
+      .platforms-hero-copy { width: 100%; height: auto; padding: 1.7rem; max-width: 100%; justify-content: flex-start; }
       .platforms-hero-copy h2 { font-size: clamp(2rem, 11vw, 3.1rem); }
       .platforms-hero-copy p { font-size: .92rem; max-width: 95%; }
       .platforms-grid { grid-template-columns: 1fr; }
