@@ -293,30 +293,45 @@
     }
     .platforms-hero {
       position: relative;
+      width: min(100%, 980px);
       aspect-ratio: 1653 / 951;
       min-height: 0;
-      max-width: 980px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
+      display: block;
       color: var(--ink);
       background: var(--ivory);
       margin: 0 auto 2rem;
       border: 1px solid rgba(20,20,20,.12);
+    }
+    .platforms-hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      filter: saturate(.92) contrast(.98);
     }
     .platforms-hero::before {
       content: '';
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(90deg, rgba(244,238,228,.98) 0%, rgba(244,238,228,.94) 25%, rgba(244,238,228,.58) 45%, rgba(244,238,228,.10) 72%, rgba(244,238,228,0) 100%);
+      background: linear-gradient(90deg, rgba(244,238,228,.99) 0%, rgba(244,238,228,.96) 22%, rgba(244,238,228,.64) 42%, rgba(244,238,228,.14) 68%, rgba(244,238,228,0) 100%);
       pointer-events: none;
     }
     .platforms-hero-copy {
-      position: relative;
+      position: absolute;
       z-index: 2;
-      padding: clamp(2rem, 4.2vw, 3.25rem);
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 36%;
       max-width: 360px;
+      padding: clamp(2rem, 4.2vw, 3.1rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .platforms-hero-copy h2 {
       font-size: clamp(2rem, 3vw, 3.15rem);
@@ -862,10 +877,10 @@
       .areas-grid { grid-template-columns: 1fr; }
       .area-card { display: grid; grid-template-columns: 140px 1fr; gap: 1rem; padding-left: 0; border-left: 0; border-top: 1px solid var(--line); padding-top: 1rem; }
       .area-card img { margin: 0; aspect-ratio: 1/1; }
-      .platforms-hero { aspect-ratio: auto; min-height: 520px; max-width: 100%; margin-bottom: 1.3rem; align-items: flex-start; }
-      .platforms-hero::before { background: linear-gradient(180deg, rgba(244,238,228,.98) 0%, rgba(244,238,228,.88) 46%, rgba(244,238,228,.25) 72%, rgba(244,238,228,0) 100%); }
+      .platforms-hero { aspect-ratio: auto; min-height: 520px; width: 100%; margin-bottom: 1.3rem; }
+      .platforms-hero::before { background: linear-gradient(180deg, rgba(244,238,228,.99) 0%, rgba(244,238,228,.90) 45%, rgba(244,238,228,.28) 72%, rgba(244,238,228,0) 100%); }
       .platforms-hero img { object-position: center bottom; }
-      .platforms-hero-copy { padding: 1.7rem; max-width: 100%; }
+      .platforms-hero-copy { width: 100%; max-width: 100%; bottom: auto; padding: 1.7rem; justify-content: flex-start; }
       .platforms-hero-copy h2 { font-size: clamp(2rem, 11vw, 3.1rem); }
       .platforms-hero-copy p { font-size: .92rem; max-width: 95%; }
       .platforms-grid { grid-template-columns: 1fr; }
