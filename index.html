@@ -293,10 +293,10 @@
     }
     .platforms-hero {
       position: relative;
-      max-width: 980px;
+      max-width: 100%;
       overflow: hidden;
       display: grid;
-      grid-template-columns: 32% 68%;
+      grid-template-columns: minmax(280px, 30%) minmax(0, 70%);
       align-items: stretch;
       color: var(--ink);
       background: var(--ivory);
@@ -308,10 +308,12 @@
       grid-column: 2;
       grid-row: 1;
       width: 100%;
-      height: auto;
+      height: 100%;
+      min-height: 520px;
       display: block;
       object-fit: contain;
       object-position: center center;
+      background: var(--ivory);
       filter: saturate(.94) contrast(.98);
       z-index: 0;
     }
@@ -320,8 +322,8 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      left: 31%;
-      width: 11%;
+      left: calc(30% - 2px);
+      width: 10%;
       z-index: 1;
       background: linear-gradient(90deg, rgba(244,238,228,1) 0%, rgba(244,238,228,.86) 35%, rgba(244,238,228,.38) 72%, rgba(244,238,228,0) 100%);
       pointer-events: none;
@@ -336,7 +338,7 @@
       grid-row: 1;
       width: 100%;
       height: 100%;
-      padding: clamp(2rem, 4.2vw, 3.25rem);
+      padding: clamp(2.2rem, 4.2vw, 3.75rem);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -865,10 +867,11 @@
       .hero::before { display: none; }
       .hero-bg {
         position: relative;
-        height: 330px;
+        height: auto;
         width: 100%;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center;
+        background: var(--ivory);
       }
       .hero-content {
         padding: 2.2rem 0 3rem;
@@ -880,7 +883,7 @@
       }
       .container, .hero-content, .footer-inner { width: min(100% - 30px, var(--max)); }
       .split, .why-inner, .selective { grid-template-columns: 1fr; }
-      .split-copy { border-left: 0; padding: 2rem 0; }
+      .split-copy { border-left: 0; padding: 2rem 1.25rem; }
       .split-media img,
       .split-media video { min-height: 310px; }
       .areas-grid { grid-template-columns: 1fr; }
@@ -889,7 +892,7 @@
       .platforms-hero { grid-template-columns: 1fr; max-width: 100%; margin-bottom: 1.3rem; }
       .platforms-hero::before { content: none; }
       .platforms-hero::after { content: none; }
-      .platforms-hero img { grid-column: 1; grid-row: 2; width: 100%; height: auto; object-fit: contain; object-position: center center; }
+      .platforms-hero img { grid-column: 1; grid-row: 2; width: 100%; height: auto; min-height: 0; object-fit: contain; object-position: center center; }
       .platforms-hero-copy { grid-column: 1; grid-row: 1; width: 100%; height: auto; padding: 1.7rem; max-width: 100%; justify-content: flex-start; }
       .platforms-hero-copy h2 { font-size: clamp(2rem, 11vw, 3.1rem); }
       .platforms-hero-copy p { font-size: .92rem; max-width: 95%; }
